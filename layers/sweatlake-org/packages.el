@@ -85,12 +85,10 @@
                               ))
 
    ;; variables about the org-agenda files
-   org-agenda-files '("~/work/Dropbox/Note/Peter.F.Drucker/GTD")
-   ;;                    "~/work/Dropbox/Note/Peter.F.Drucker/Capture")
-
+   org-agenda-files '("~/work/Dropbox/life/gtd/")
 
    ;; variables about the org-capture directory
-   org-capture-directory "~/work/Dropbox/Note/Peter.F.Drucker/Capture"
+   org-capture-directory "~/work/Dropbox/life/capture/"
    org-default-notes-files (concat org-capture-directory "/todo.org")
 
    ;; capture templates
