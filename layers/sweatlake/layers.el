@@ -10,8 +10,7 @@
 ;;; License: GPLv3
 
 (configuration-layer/declare-layers '(
-                                           sweatlake-org
-                                           sweatlake-ui
-                                           sweatlake-evil
-                                           sweatlake-lang
-                                           ))
+                                      sweatlake-org
+                                      sweatlake-ui
+                                      sweatlake-evil
+                                      ))

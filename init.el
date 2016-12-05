@@ -30,7 +30,10 @@ values."
      auto-completion
      better-defaults
      chinese
+
+     osx
      chrome
+     search-engine
 
      colors
      (colors :variables
@@ -39,30 +42,28 @@ values."
               colors-enable-nyan-cat-progress-bar t)
 
      syntax-checking
+
+     git
      version-control
 
-     emacs-lisp
-     git
      finance
      mu4e
-     ;; +vim
 
      ;; language
-     python
-     ruby
      sql
-     latex
-     html
+     graphviz
      emacs-lisp
-     javascript
-     markdown
      org
      yaml
+     html
+     latex
+     markdown
      c-c++
      react
-
-     ;; eyebrowse
-     ;; eyebrowse
+     python
+     javascript
+     ruby
+     ruby-on-rails
 
      ;; fun
      games
@@ -229,7 +230,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -303,9 +304,6 @@ you should place you code here."
     (setq python-shell-interpreter "python3")
     (global-auto-complete-mode 1)
 
-    ;; (evil-set-initial-state 'org-mode 'emacs)
-
-    ;; global set keys about org-agenda, org-capture
     (global-set-key "\C-ca" 'org-agenda)
     (global-set-key "\C-cc" 'org-capture)
     (setq default-tab-width 4)
@@ -357,7 +355,7 @@ you should place you code here."
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (org-octopress ctable orglue org-mac-link epic o-blog graphviz-dot-mode pinyinlib disaster company-c-headers cmake-mode clang-format py-yapf tabbar cursor-chg yaml-mode pacmacs 2048-game rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv gmail-message-mode ham-mode html-to-markdown eyebrowse edit-server chruby bundler inf-ruby git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flycheck-pos-tip flycheck-ledger flycheck diff-hl org-pomodoro alert log4e gntp org-plus-contrib org-bullets htmlize gnuplot rainbow-mode rainbow-identifiers smex pangu-spacing find-by-pinyin-dired chinese-pyim ace-pinyin ace-jump-mode zenburn-theme monokai-theme solarized-theme web-mode web-beautify tagedit sql-indent slim-mode scss-mode sass-mode pyvenv pytest pyenv-mode pip-requirements less-css-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc jade-mode hy-mode helm-pydoc helm-css-scss haml-mode emmet-mode cython-mode company-web web-completion-data company-tern dash-functional tern company-auctex company-anaconda coffee-mode auctex anaconda-mode pythonic f ledger-mode mmm-mode markdown-toc markdown-mode helm-company helm-c-yasnippet gh-md company-statistics company-quickhelp pos-tip company auto-yasnippet yasnippet ac-ispell auto-complete smeargle orgit magit-gitflow helm-gitignore request gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger evil-magit magit magit-popup git-commit with-editor toc-org org-repo-todo org-present paradox hydra adaptive-wrap ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline s powerline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el spinner page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-jumper evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme)))
+    (yapfify uuidgen typit mmt rake py-isort pug-mode org-projectile org org-download mwim mu4e-maildirs-extension mu4e-alert ht minitest livid-mode skewer-mode simple-httpd live-py-mode link-hint hide-comnt helm-purpose window-purpose imenu-list git-link evil-visual-mark-mode evil-unimpaired evil-ediff goto-chg undo-tree dumb-jump diminish column-enforce-mode color-identifiers-mode chinese-pyim-basedict org-octopress ctable orglue org-mac-link epic o-blog graphviz-dot-mode pinyinlib disaster company-c-headers cmake-mode clang-format py-yapf tabbar cursor-chg yaml-mode pacmacs 2048-game rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv gmail-message-mode ham-mode html-to-markdown eyebrowse edit-server chruby bundler inf-ruby git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter flycheck-pos-tip flycheck-ledger flycheck diff-hl org-pomodoro alert log4e gntp org-plus-contrib org-bullets htmlize gnuplot rainbow-mode rainbow-identifiers smex pangu-spacing find-by-pinyin-dired chinese-pyim ace-pinyin ace-jump-mode zenburn-theme monokai-theme solarized-theme web-mode web-beautify tagedit sql-indent slim-mode scss-mode sass-mode pyvenv pytest pyenv-mode pip-requirements less-css-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc jade-mode hy-mode helm-pydoc helm-css-scss haml-mode emmet-mode cython-mode company-web web-completion-data company-tern dash-functional tern company-auctex company-anaconda coffee-mode auctex anaconda-mode pythonic f ledger-mode mmm-mode markdown-toc markdown-mode helm-company helm-c-yasnippet gh-md company-statistics company-quickhelp pos-tip company auto-yasnippet yasnippet ac-ispell auto-complete smeargle orgit magit-gitflow helm-gitignore request gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger evil-magit magit magit-popup git-commit with-editor toc-org org-repo-todo org-present paradox hydra adaptive-wrap ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline s powerline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el spinner page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-jumper evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
