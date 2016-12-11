@@ -49,6 +49,9 @@ values."
      finance
      mu4e
 
+     (spacemacs-layouts :variables layouts-enable-autosave nil
+                        layouts-autosave-delay 300)
+
      ;; language
      sql
      graphviz
@@ -262,7 +265,7 @@ values."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
@@ -299,13 +302,8 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
     (menu-bar-mode 1)
-    (tabbar-mode 1)
-    (global-linum-mode)     ; show line number by default
     (setq python-shell-interpreter "python3")
-    (global-auto-complete-mode 1)
 
-    (global-set-key "\C-ca" 'org-agenda)
-    (global-set-key "\C-cc" 'org-capture)
     (setq default-tab-width 4)
    )
 

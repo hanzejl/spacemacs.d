@@ -109,11 +109,11 @@ makes:
     (src-block . org-jekyll-src-block)
     (inner-template . org-jekyll-inner-template)) ;; force body-only
   :options-alist
-  '((:jekyll-layout "JEKYLL_LAYOUT" nil org-jekyll-layout)
-    (:jekyll-categories "JEKYLL_CATEGORIES" nil org-jekyll-categories)
-    (:jekyll-tags "JEKYLL_TAGS" nil org-jekyll-tags)
-    (:jekyll-published "JEKYLL_PUBLISHED" nil org-jekyll-published)
-    (:jekyll-comments "JEKYLL_COMMENTS" nil org-jekyll-comments)))
+  '((:jekyll-layout "LAYOUT" nil org-jekyll-layout)
+    (:jekyll-categories "CATEGORIES" nil org-jekyll-categories)
+    (:jekyll-tags "TAGS" nil org-jekyll-tags)
+    (:jekyll-published "PUBLISHED" nil org-jekyll-published)
+    (:jekyll-comments "COMMENTS" nil org-jekyll-comments)))
 
 
 ;;; Internal Filters
@@ -310,10 +310,10 @@ Return output file name."
                        "#+TITLE: "             title
                        "\n#+DATE: "              date
                        "\n#+SETUPFILE: "         setupfile
-                       "\n#+JEKYLL_LAYOUT: "     layout
-                       "\n#+JEKYLL_CATEGORIES: " categories
-                       "\n#+JEKYLL_TAGS: "       tags
-                       "\n#+JEKYLL_PUBLISHED: "  published
+                       "\n#+LAYOUT: "     layout
+                       "\n#+CATEGORIES: " categories
+                       "\n#+TAGS: "       tags
+                       "\n#+PUBLISHED: "  published
                        "\n\n* \n\n{{{more}}}"))))))
 
 ;;; provide

@@ -30,12 +30,14 @@
 ;;; Code:
 
 (defconst sweatlake-org-packages '(org
+                                   blog-admin
                                    org-octopress))
 
 (defun sweatlake-org/post-init-org()
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
   (setq-default
+   org-html-validation-link nil
    ;; some variables about the startup
    org-startup-with-inline-images nil       ; not show the inline images
    ;; org-agenda-include-diary t               ; show the diary integration
@@ -133,11 +135,9 @@
       (evilified-state-evilify org-octopress-summary-mode org-octopress-summary-mode-map)
       (add-hook 'org-octopress-summary-mode-hook
                 #'(lambda () (local-set-key (kbd "q") 'bury-buffer)))
-      (setq org-blog-dir "~/work/Dropbox/octopress/")
-      (setq org-octopress-directory-top (concat org-blog-dir "source"))
-      (setq org-octopress-directory-posts (concat org-blog-dir "source/_posts"))
+      (setq org-blog-dir "~/work/Dropbox/blog/")
       (setq org-octopress-directory-org-top (concat org-blog-dir "source"))
-      (setq org-octopress-directory-org-posts (concat org-blog-dir "source/blog"))
+      (setq org-octopress-directory-org-posts (concat org-blog-dir "source/_posts"))
       (setq org-octopress-setup-file (concat org-blog-dir "setupfile.org"))
 
       (defun org-octopress/org-save-and-export ()
@@ -148,8 +148,17 @@
       )))
 
 
-(defun sweatlake-org/init-htmlize ()
-  (use-package htmlize
-    :defer t))
+(defun sweatlake-org/init-blog-admin ()
+  (use-package blog-admin
+    :config (progn
+              (setq blog-admin-backend-type 'hexo
+                    blog-admin-backend-path "~/work/Dropbox/blog"
+                    blog-admin-backend-new-post-in-drafts t
+                    blog-admin-backend-new-post-with-same-name-dir nil
+                    blog-admin-backend-hexo-config-file "_config.yml")
+              (spacemacs/set-leader-keys "abb" 'blog-admin-start)
+              (add-hook 'blog-admin-backend-after-new-post-hook 'find-file)
+              (setq blog-admin-backend-hexo-template-org-post  ;; post模板
+                    "#+TITLE: %s\n#+AUTHOR: 張榮\n#+EMAIL: hanzejl@gmail.com\n#+DATE: %s\n#+LAYOUT: post\n#+TAGS:\n#+CATEGORIES:\n#+DESCRIPTON: \n"))))
 
 ;;; packages.el ends here

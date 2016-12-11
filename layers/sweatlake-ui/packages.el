@@ -28,13 +28,3 @@
 ;;   `magic-gui/post-init-PACKAGE' to customize the package as it is loaded.
 
 ;;; Code:
-
-(defvar sweatlake-ui-packages '(tabbar))
-
-;; (defun sweatlake-ui/init-cursor-chg ()
-;;   (use-package change-chg))
-
-(defun sweatlake-ui/init-tabbar()
-  (use-package tabbar))
-
-;;; packages.el ends here

@@ -11,9 +11,8 @@
 
 ;; A complementary binding to the apropos-command (C-h a)
 
-
-;; keybindings about gloabal org-mode keys
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
-
-(spacemacs/set-leader-keys "bB" 'list-buffers)
+(spacemacs/declare-prefix "ab" "blog")
+(spacemacs/set-leader-keys "abb" 'blog-admin-start)
+(spacemacs/set-leader-keys "abd" 'blog-admin-backend-hexo-deploy-site)
+(spacemacs/set-leader-keys "abc" 'blog-admin-backend-hexo-config-file)
+(spacemacs/set-leader-keys "abg" 'blog-admin-backend-hexo-build-site)

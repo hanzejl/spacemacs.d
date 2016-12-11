@@ -11,6 +11,5 @@
 
 (configuration-layer/declare-layers '(
                                       sweatlake-org
-                                      sweatlake-ui
                                       sweatlake-evil
                                       ))
