@@ -30,6 +30,7 @@
 ;;; Code:
 
 (defconst sweatlake-org-packages '(org
+                                   (ox-publish :location built-in)
                                    blog-admin
                                    org-octopress))
 
@@ -123,8 +124,37 @@
            ("d" "Diary" entry (file+datetree (concat org-capture-directory "/diary.org"))
             "* %?\n%U\n" :clock-in t :clock-resume t)
            ))
+
    )
 )
+
+
+(defun sweatlake-org/init-ox-publish ()
+  (use-package ox-publish
+    :init
+    (progn
+      (setq org-publish-project-alist
+            (quote ((
+                     ("notes-org"
+                      :base-directory "~/work/Dropbox/wiki/org/"
+                      :base-extension "org"
+                      :publishing-directory "~/work/Dropbox/wiki/site/"
+                      :recursive t
+                      :publishing-function org-html-publish-to-html
+                      :auto-sitemap t
+                      )
+
+                     ("notes-static"
+                      :base-directory "~/work/Dropbox/wiki/org/"
+                      :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+                      :publishing-directory "~/work/Dropbox/wiki/site/"
+                      :recursive t
+                      :publishing-function org-publish-attachment
+                      )
+
+                     ("notes" :components ("notes-org" "notes-static"))
+                     ))))
+      )))
 
 
 (defun sweatlake-org/init-org-octopress ()
