@@ -1,0 +1,24 @@
+#+AUTHOR: 張榮（汗澤-sweatlake）
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:nil arch:headline author:t
+#+OPTIONS: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+OPTIONS: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+OPTIONS: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+EMAIL: hanzejl@gmail.com
+#+LANGUAGE: zh-TW
+#+SELECT_TAGS: export
+#+EXCLUDE_TAGS: noexport
+#+CREATOR: Emacs 25.1.1 (Org mode 9.0.1)
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/styles/css/htmlize.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/styles/css/bigblow.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/styles/css/hideshow.css"/>
+
+#+HTML_HEAD: <script type="text/javascript" src="/styles/js/jquery-1.11.0.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="/styles/js/jquery-ui-1.10.2.min.js"></script>
+
+#+HTML_HEAD: <script type="text/javascript" src="/styles/js/jquery.localscroll-min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="/styles/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="/styles/js/jquery.zclip.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="/styles/js/bigblow.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="/styles/js/hideshow.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="/styles/js/jquery.stickytableheaders.min.js"></script>
