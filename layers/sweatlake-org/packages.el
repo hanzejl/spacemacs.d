@@ -30,133 +30,120 @@
 ;;; Code:
 
 (defconst sweatlake-org-packages '(org
-                                   (ox-publish :location built-in)
                                    blog-admin
                                    org-octopress))
 
 (defun sweatlake-org/post-init-org()
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
-  (setq-default
-   org-html-validation-link nil
-   ;; some variables about the startup
-   org-startup-with-inline-images nil       ; not show the inline images
-   ;; org-agenda-include-diary t               ; show the diary integration
-   org-agenda-start-on-weekday nil          ; start on weekday none
-   org-agenda-span 14                       ; set the org-days from now
-   org-agenda-window-setup 'current-window  ; current-window to open the agenda view
-   org-startup-indented t
-
-   ;; variables about the TODO Keywords
-   org-todo-keywords (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
-                             (sequence "WAITING(w@/!)" "HOLD(h@/!)"
-                                       "PROJECT(p@)" "|" "CANCELLED(c@/!)" "|" "CLOSED(s@/!)"
-                                       "PHONE" "METTING")))
-
-   org-todo-keyword-faces (quote (("TODO" :foreground "red" :weight bold)
-                                  ("NEXT" :foreground "blue" :weight bold)
-                                  ("DONE" :foreground "forest green" :weight bold)
-                                  ("WAITING" :foreground "orange" :weight bold)
-                                  ("HOLD" :foreground "magenta" :weight bold)
-                                  ("CANCELLED" :foreground "forest green" :weight bold)
-                                  ("CLOSED" :foreground "forest green" :weight bold)
-                                  ("MEETING" :foreground "forest green" :weight bold)
-                                  ("PHONE" :foreground "forest green" :weight bold)))
-
-   org-todo-state-tags-triggers (quote (("CANCELLED" ("CANCELLED" . t))
-                                        ("WAITING" ("WAITING" . t))
-                                        ("CLOSED" ("CLOSED" . t))
-                                        ("HOLD" ("WAITING") ("HOLD" . t))
-                                        ("DONE" ("WAITING") ("HOLD"))
-                                        ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
-                                        ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
-                                        ("DONE" ("WAITING") ("CANCELLED") ("HOLD"))))
-
-   ;; variables about the org-priority
-   ;; see the "Put First Things First"
-   ;; -- A is for Urgent and Important
-   ;; -- B is for Not Urgent but Important
-   ;; -- C is for not Urgent and not Important
-   ;; -- D is for Urgent but Not Important
-   org-highest-priority ?A
-   org-lowest-priority ?D
-   org-default-priority ?B
-   org-priority-faces (quote ((?A . (:foreground "#FF00FF" :weight bold))
-                              (?B . (:foreground "green" :weight bold))
-                              (?C . (:foreground "#00CCFF"))
-                              (?D . (:foreground "#9900FF"))
-                              ))
-
-   ;; variables about the org-agenda files
-   org-agenda-files '("~/work/Dropbox/life/gtd/")
-
-   ;; variables about the org-capture directory
-   org-capture-directory "~/work/Dropbox/life/capture/"
-   org-default-notes-files (concat org-capture-directory "/todo.org")
-
-   ;; capture templates
-   org-capture-templates
-   (quote (("t" "Todo" entry (file+headline (concat org-capture-directory "/todo.org") "Plans")
-            "* TODO %?\n%U\n" :clock-in t :clock-resume t)
-           ("m" "Meeting" entry (file+headline (concat org-capture-directory "/todo.org") "Meetings")
-            "* MEETING with %? :MEETING:\n%U\n" :clock-in t :clock-resume t)
-           ("p" "Phone call" entry (file+headline (concat org-capture-directory "/todo.org") "Phone Call")
-            "* PHONE %? :PHONE:\n%U\n" :clock-in t :clock-resume t)
-
-           ("b" "Books" item (file+headline (concat org-capture-directory "/todo.org") "Books")
-            "- 需要阅读《%?》    %U\n")
-           ("f" "Films" item (file+headline (concat org-capture-directory "/todo.org") "Films")
-            "- 优秀电影、纪录片《%?》    %U\n")
-           ("j" "Jounery" entry (file+headline (concat org-capture-directory "/todo.org") "Jounery")
-            "** 计划去<%?>地方旅行\nSCHEDULED: %u\n")
-           ("e" "Entertainment" entry (file+headline (concat org-capture-directory "/todo.org") "Entertainment")
-            "** <%?>: %u")
-
-           ;; note file
-           ("n" "Note" entry (file (concat org-capture-directory "/note.org"))
-            "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
-
-           ;; the new habit
-           ("h" "Habit" entry (file (concat org-capture-directory "/habit.org"))
-            "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"<%Y-%m-%d %a .+1d/3d>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
-
-           ;; diary file
-           ("d" "Diary" entry (file+datetree (concat org-capture-directory "/diary.org"))
-            "* %?\n%U\n" :clock-in t :clock-resume t)
-           ))
-
-   )
-  )
-
-
-(defun sweatlake-org/init-ox-publish ()
-  (use-package ox-publish
-    :init
+  (with-eval-after-load 'org
     (progn
-      (setq org-publish-project-alist
-            '(
-              ("notes-org"
-               :base-directory "~/work/Dropbox/wiki/org/"
-               :base-extension "org"
-               :publishing-directory "~/work/Dropbox/wiki/site/"
-               :recursive t
-               :publishing-function org-html-publish-to-html
-               :exclude "private.org"
-               :auto-sitemap t
-               :index-title "網站地圖"
-               :auto-preamble t
-               )
+      (setq-default
+       org-html-validation-link nil
+       ;; some variables about the startup
+       org-startup-with-inline-images nil       ; not show the inline images
+       ;; org-agenda-include-diary t               ; show the diary integration
+       org-agenda-start-on-weekday nil          ; start on weekday none
+       org-agenda-span 14                       ; set the org-days from now
+       org-agenda-window-setup 'current-window  ; current-window to open the agenda view
+       org-startup-indented t)
 
-              ("notes-static"
-               :base-directory "~/work/Dropbox/wiki/org/"
-               :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-               :publishing-directory "~/work/Dropbox/wiki/site/"
-               :recursive t
-               :publishing-function org-publish-attachment
-               )
+      ;; variables about the TODO Keywords
+      (setq-default
+       org-todo-keywords (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
+                                 (sequence "WAITING(w@/!)" "HOLD(h@/!)"
+                                           "PROJECT(p@)" "|" "CANCELLED(c@/!)" "|" "CLOSED(s@/!)"
+                                           "PHONE" "METTING")))
 
-              ("alls" :components ("notes-org" "notes-static"))
-              ))
+       org-todo-keyword-faces (quote (("TODO" :foreground "red" :weight bold)
+                                      ("NEXT" :foreground "blue" :weight bold)
+                                      ("DONE" :foreground "forest green" :weight bold)
+                                      ("WAITING" :foreground "orange" :weight bold)
+                                      ("HOLD" :foreground "magenta" :weight bold)
+                                      ("CANCELLED" :foreground "forest green" :weight bold)
+                                      ("CLOSED" :foreground "forest green" :weight bold)
+                                      ("MEETING" :foreground "forest green" :weight bold)
+                                      ("PHONE" :foreground "forest green" :weight bold)))
+
+       org-todo-state-tags-triggers (quote (("CANCELLED" ("CANCELLED" . t))
+                                            ("WAITING" ("WAITING" . t))
+                                            ("CLOSED" ("CLOSED" . t))
+                                            ("HOLD" ("WAITING") ("HOLD" . t))
+                                            ("DONE" ("WAITING") ("HOLD"))
+                                            ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
+                                            ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+                                            ("DONE" ("WAITING") ("CANCELLED") ("HOLD"))))
+       )
+
+      ;; variables about the org-priority
+      ;; see the "Put First Things First"
+      ;; -- A is for Urgent and Important
+      ;; -- B is for Not Urgent but Important
+      ;; -- C is for not Urgent and not Important
+      ;; -- D is for Urgent but Not Important
+      (setq-default
+       org-highest-priority ?A
+       org-lowest-priority ?D
+       org-default-priority ?B
+       org-priority-faces (quote ((?A . (:foreground "#FF00FF" :weight bold))
+                                  (?B . (:foreground "green" :weight bold))
+                                  (?C . (:foreground "#00CCFF"))
+                                  (?D . (:foreground "#9900FF"))
+                                  )))
+
+      ;; variables about the org-agenda files
+      (setq-default
+       org-agenda-files '("~/work/Dropbox/life/gtd/")
+
+       ;; variables about the org-capture directory
+       org-capture-directory "~/work/Dropbox/life/capture/"
+       org-default-notes-files (concat org-capture-directory "/todo.org"))
+
+      (setq-default
+       ;; capture templates
+       org-capture-templates
+       (quote (("t" "Todo" entry (file+headline (concat org-capture-directory "/todo.org") "Plans")
+                "* TODO %?\n%U\n" :clock-in t :clock-resume t)
+               ("m" "Meeting" entry (file+headline (concat org-capture-directory "/todo.org") "Meetings")
+                "* MEETING with %? :MEETING:\n%U\n" :clock-in t :clock-resume t)
+               ("p" "Phone call" entry (file+headline (concat org-capture-directory "/todo.org") "Phone Call")
+                "* PHONE %? :PHONE:\n%U\n" :clock-in t :clock-resume t)
+
+               ("b" "Books" item (file+headline (concat org-capture-directory "/todo.org") "Books")
+                "- 需要阅读《%?》    %U\n")
+               ("f" "Films" item (file+headline (concat org-capture-directory "/todo.org") "Films")
+                "- 优秀电影、纪录片《%?》    %U\n")
+               ("j" "Jounery" entry (file+headline (concat org-capture-directory "/todo.org") "Jounery")
+                "** 计划去<%?>地方旅行\nSCHEDULED: %u\n")
+               ("e" "Entertainment" entry (file+headline (concat org-capture-directory "/todo.org") "Entertainment")
+                "** <%?>: %u")
+
+               ;; note file
+               ("n" "Note" entry (file (concat org-capture-directory "/note.org"))
+                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
+
+               ;; diary file
+               ("d" "Diary" entry (file+datetree (concat org-capture-directory "/diary.org"))
+                "* %?\n%U\n" :clock-in t :clock-resume t)
+               )))
+
+      (setq-default
+       org-ditta-jar-path "~/.spacemacs.d/ditaa.jar"
+       org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar"
+       org-babel-results-keyword "results")
+
+      (org-babel-do-load-languages
+       'org-babel-load-languages
+       '((perl . t)
+         (ruby . t)
+         (dot . t)
+         (sh . t)
+         (js . t)
+         (latex .t)
+         (python . t)
+         (emacs-lisp . t)
+         (plantuml . t)
+         (ditaa . t)))
       )))
 
 
