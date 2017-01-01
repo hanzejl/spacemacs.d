@@ -8,6 +8,7 @@
 #+SELECT_TAGS: export
 #+EXCLUDE_TAGS: noexport
 #+CREATOR: Emacs 25.1.1 (Org mode 9.0.1)
+#+PROPERTY: header-args :exports code
 
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/styles/css/htmlize.css"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/styles/css/bigblow.css"/>

@@ -18,20 +18,21 @@
 ;;
 ;;
 ;; Briefly, each package to be installed or configured by this layer should be
-;; added to `magic-org-packages'. Then, for each package PACKAGE:
+;; added to `sweatlake-org-packages'. Then, for each package PACKAGE:
 ;;
 ;; - If PACKAGE is not referenced by any other Spacemacs layer, define a
-;;   function `magic-org/init-PACKAGE' to load and initialize the package.
+;;   function `sweatlake-org/init-PACKAGE' to load and initialize the package.
 
 ;; - Otherwise, PACKAGE is already referenced by another Spacemacs layer, so
-;;   define the functions `magic-org/pre-init-PACKAGE' and/or
-;;   `magic-org/post-init-PACKAGE' to customize the package as it is loaded.
+;;   define the functions `sweatlake-org/pre-init-PACKAGE' and/or
+;;   `sweatlake-org/post-init-PACKAGE' to customize the package as it is loaded.
 
 ;;; Code:
 
-(defconst sweatlake-org-packages '(org
-                                   blog-admin
-                                   org-octopress))
+(defconst sweatlake-org-packages
+  '((org :location built-in)
+    blog-admin
+    ))
 
 (defun sweatlake-org/post-init-org()
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
@@ -42,11 +43,15 @@
        org-html-validation-link nil
        ;; some variables about the startup
        org-startup-with-inline-images nil       ; not show the inline images
-       ;; org-agenda-include-diary t               ; show the diary integration
        org-agenda-start-on-weekday nil          ; start on weekday none
        org-agenda-span 14                       ; set the org-days from now
        org-agenda-window-setup 'current-window  ; current-window to open the agenda view
-       org-startup-indented t)
+       org-startup-indented t
+
+       org-agenda-files '("~/work/Dropbox/life/gtd/")
+       ;; variables about the org-capture directory
+       org-capture-directory "~/work/Dropbox/life/capture/"
+       org-default-notes-files (concat org-capture-directory "/todo.org"))
 
       ;; variables about the TODO Keywords
       (setq-default
@@ -91,14 +96,6 @@
                                   (?D . (:foreground "#9900FF"))
                                   )))
 
-      ;; variables about the org-agenda files
-      (setq-default
-       org-agenda-files '("~/work/Dropbox/life/gtd/")
-
-       ;; variables about the org-capture directory
-       org-capture-directory "~/work/Dropbox/life/capture/"
-       org-default-notes-files (concat org-capture-directory "/todo.org"))
-
       (setq-default
        ;; capture templates
        org-capture-templates
@@ -127,43 +124,26 @@
                 "* %?\n%U\n" :clock-in t :clock-resume t)
                )))
 
-      (setq-default
-       org-ditta-jar-path "~/.spacemacs.d/ditaa.jar"
-       org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar"
-       org-babel-results-keyword "results")
+      (setq org-plantuml-jar-path
+            (expand-file-name "~/.spacemacs.d/plantuml.jar"))
+      (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa.jar")
+      (setq-default org-babel-results-keyword "results")
 
       (org-babel-do-load-languages
        'org-babel-load-languages
        '((perl . t)
          (ruby . t)
-         (dot . t)
          (sh . t)
+         (dot . t)
          (js . t)
          (latex .t)
          (python . t)
          (emacs-lisp . t)
          (plantuml . t)
+         (C . t)
          (ditaa . t)))
-      )))
 
-
-(defun sweatlake-org/init-org-octopress ()
-  (use-package org-octopress
-    :commands (org-octopress org-octopress-setup-publish-project)
-    :init
-    (progn
-      (evilified-state-evilify org-octopress-summary-mode org-octopress-summary-mode-map)
-      (add-hook 'org-octopress-summary-mode-hook
-                #'(lambda () (local-set-key (kbd "q") 'bury-buffer)))
-      (setq org-blog-dir "~/work/Dropbox/blog/")
-      (setq org-octopress-directory-org-top (concat org-blog-dir "source"))
-      (setq org-octopress-directory-org-posts (concat org-blog-dir "source/_posts"))
-      (setq org-octopress-setup-file (concat org-blog-dir "setupfile.org"))
-
-      (defun org-octopress/org-save-and-export ()
-        (interactive)
-        (org-octopress-setup-publish-project)
-        (org-publish-project "octopress" t))
+      (setq org-confirm-babel-evaluate nil)
 
       )))
 
