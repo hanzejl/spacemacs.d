@@ -144,7 +144,7 @@
          (ditaa . t)))
 
       (setq org-confirm-babel-evaluate nil)
-
+      (add-to-list 'org-src-lang-modes (quote ("dot" . graphviz-dot)))
       )))
 
 
