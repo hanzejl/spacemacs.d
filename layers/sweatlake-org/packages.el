@@ -32,7 +32,30 @@
 (defconst sweatlake-org-packages
   '((org :location built-in)
     blog-admin
+    org-pomodoro
     ))
+
+
+(defun sweatlake-org/post-init-org-pomodoro ()
+  (use-package org-pomodoro
+    :config (progn
+              (add-hook 'org-pomodoro-finished-hook
+                        (lambda ()
+                          (sweatlake/terminal-notify-osx "Pomodoro Finished"
+                                                         "☕️ Have a break!")))
+              (add-hook 'org-pomodoro-short-break-finished-hook
+                        (lambda ()
+                          (sweatlake/terminal-notify-osx "Short Break"
+                                                         "Ready to Go?")))
+              (add-hook 'org-pomodoro-long-break-finished-hook
+                        (lambda ()
+                          (sweatlake/terminal-notify-osx "Long Break"
+                                                         "Ready to Go?")))
+              (add-hook 'org-pomodoro-killed-hook
+                        (lambda ()
+                          (sweatlake/terminal-notify-osx "Pomodoro Killed"
+                                                         "One does not simply kill a pomodoro!")))
+      )))
 
 (defun sweatlake-org/post-init-org()
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
@@ -145,6 +168,23 @@
 
       (setq org-confirm-babel-evaluate nil)
       (add-to-list 'org-src-lang-modes (quote ("dot" . graphviz-dot)))
+
+      ;; org-mode 設定
+      (require 'org-crypt)
+
+      ;; 當被加密的部份要存入硬碟時，自動加密回去
+      (org-crypt-use-before-save-magic)
+
+      ;; 設定要加密的 tag 標籤為 secret
+      (setq org-crypt-tag-matcher "secret")
+
+      ;; 避免 secret 這個 tag 被子項目繼承 造成重複加密
+      ;; (但是子項目還是會被加密喔)
+      (setq org-tags-exclude-from-inheritance (quote ("secret")))
+
+      ;; 用於加密的 GPG 金鑰
+      ;; 可以設定任何 ID 或是設成 nil 來使用對稱式加密 (symmetric encryption)
+      (setq org-crypt-key nil)
       )))
 
 

@@ -164,7 +164,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(leuven
+                         spacemacs-dark
                          zenburn
                          spacemacs-light)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
@@ -351,6 +352,12 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
   (setq powerline-default-separator 'arrow)
+
+  (with-eval-after-load 'python
+    (remove-hook 'python-mode-hook 'python)
+    (setq python-shell-interpreter "ipython"
+          python-shell-interpreter-args "-i --simple-prompt --pprint")
+    (setq python-shell-completion-native nil))
   )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
