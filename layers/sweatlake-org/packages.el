@@ -39,10 +39,15 @@
 (defun sweatlake-org/post-init-org-pomodoro ()
   (use-package org-pomodoro
     :config (progn
+              (setq
+               org-pomodoro-format "P~%s"
+               org-pomodoro-short-break-format "SB~%s"
+               org-pomodoro-long-break-format "LB~%s"
+               )
               (add-hook 'org-pomodoro-finished-hook
                         (lambda ()
                           (sweatlake/terminal-notify-osx "Pomodoro Finished"
-                                                         "☕️ Have a break!")))
+                                                         "☕️Have a break!")))
               (add-hook 'org-pomodoro-short-break-finished-hook
                         (lambda ()
                           (sweatlake/terminal-notify-osx "Short Break"
