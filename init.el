@@ -37,7 +37,6 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-     emacs-lisp
      auto-completion
      better-defaults
      chinese
@@ -63,29 +62,48 @@ values."
      (spacemacs-layouts :variables layouts-enable-autosave nil
                         layouts-autosave-delay 300)
 
-     ;; language
-     sql
-     graphviz
-     emacs-lisp
-     org
-     yaml
-     html
-     latex
-     markdown
+     ;; classic language
      c-c++
+
+     ;; web * app language
+     html
      react
-     python
-     django
      javascript
-     ruby
+     django
      ruby-on-rails
 
+     ;; script language
+     ruby
+     python
+     shell-scripts
+
+     ;; vim & emacs ... scripts
+     emacs-lisp
+     vimscript
+
+     ;; graph language
+     plantuml
+     graphviz
+
+     ;; markup language
+     csv
+     org
+     yaml
+     latex
+     markdown
+     restructuredtext
+
+     ;; database language
+     sql
+
+     ;; tools
      pandoc
+     imenu-list
 
      ;; fun
      games
-     emoji
 
+     ;; own layers
      sweatlake
      )
    ;; List of additional packages that will be installed without being
