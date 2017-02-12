@@ -80,6 +80,7 @@ values."
      ;; vim & emacs ... scripts
      emacs-lisp
      vimscript
+     dockerfile
 
      ;; graph language
      plantuml
