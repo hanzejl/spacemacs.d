@@ -75,6 +75,7 @@ values."
      ;; script language
      ruby
      python
+     ;; scheme
      shell-scripts
 
      ;; vim & emacs ... scripts
@@ -92,7 +93,6 @@ values."
      yaml
      latex
      markdown
-     restructuredtext
 
      ;; database language
      sql
