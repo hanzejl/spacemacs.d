@@ -79,7 +79,9 @@
        org-agenda-files '("~/work/Dropbox/life/gtd/")
        ;; variables about the org-capture directory
        org-capture-directory "~/work/Dropbox/life/capture/"
-       org-default-notes-files (concat org-capture-directory "/todo.org"))
+       org-default-notes-files (concat org-capture-directory "/todo.org")
+       org-html-htmlize-output-type 'css
+       )
 
       ;; variables about the TODO Keywords
       (setq-default
