@@ -75,6 +75,9 @@
        org-agenda-span 14                       ; set the org-days from now
        org-agenda-window-setup 'current-window  ; current-window to open the agenda view
        org-startup-indented t
+       org-log-into-drawer t
+
+       org-export-with-priority t
 
        org-agenda-files '("~/work/Dropbox/life/gtd/")
        ;; variables about the org-capture directory
