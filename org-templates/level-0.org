@@ -13,11 +13,11 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/styles/css/htmlize.css"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/styles/css/bigblow.css"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/styles/css/hideshow.css"/>
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/styles/css/jquery.fancybox.2.1.5.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/styles/css/jquery.fancybox.min.css"/>
 
 #+HTML_HEAD: <script type="text/javascript" src="/styles/js/jquery-3.1.1.min.js"></script>
 #+HTML_HEAD: <script type="text/javascript" src="/styles/js/jquery-ui-1.12.1.min.js"></script>
-#+HTML_HEAD: <script type="text/javascript" src="/styles/js/jquery.fancybox.2.1.5.pack.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="/styles/js/jquery.fancybox.min.js"></script>
 
 #+HTML_HEAD: <script type="text/javascript" src="/styles/js/jquery.localscroll-min.js"></script>
 #+HTML_HEAD: <script type="text/javascript" src="/styles/js/jquery.scrollTo-1.4.3.1-min.js"></script>

@@ -89,7 +89,7 @@ values."
 
      ;; markup language
      csv
-     org
+     (org :variables org-enable-github-support t)
      yaml
      latex
      markdown
