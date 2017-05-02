@@ -372,6 +372,9 @@ you should place your code here."
   (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
   (setq powerline-default-separator 'arrow)
 
+  (add-hook 'prog-mode-hook 'fci-mode)
+  (add-hook 'after-change-major-mode-hook 'fci-mode)
+
   (with-eval-after-load 'python
     (remove-hook 'python-mode-hook 'python)
     (setq python-shell-interpreter "ipython"
