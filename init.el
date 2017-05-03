@@ -194,8 +194,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(leuven
-                         spacemacs-dark
+   dotspacemacs-themes '(spacemacs-dark
+                         leuven
                          zenburn
                          spacemacs-light)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
@@ -383,8 +383,9 @@ you should place your code here."
   (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
   (setq powerline-default-separator 'arrow)
 
-  (add-hook 'prog-mode-hook 'fci-mode)
-  (add-hook 'after-change-major-mode-hook 'fci-mode)
+  (add-hook 'prog-mode-hook 'turn-on-fci-mode)
+  (add-hook 'text-mode-hook 'turn-on-fci-mode)
+  (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
 
   (with-eval-after-load 'python
     (remove-hook 'python-mode-hook 'python)
