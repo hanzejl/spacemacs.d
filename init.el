@@ -44,9 +44,9 @@ values."
      osx
      chrome
 
-     ;; colors
-     ;; (colors :variables
-             ;; colors-enable-rainbow-indentifiers t)
+     colors
+     (colors :variables
+             colors-enable-rainbow-indentifiers t)
      ;; (colors :variables
              ;; colors-enable-nyan-cat-progress-bar t)
 
@@ -194,9 +194,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
+   dotspacemacs-themes '(spacemacs-dark
                          leuven
-                         spacemacs-dark)
+                         spacemacs-light)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -385,6 +385,8 @@ you should place your code here."
   (add-hook 'prog-mode-hook 'turn-on-fci-mode)
   (add-hook 'text-mode-hook 'turn-on-fci-mode)
   (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
+
+  (add-hook 'css-mode-hook 'rainbow-mode)
 
   (with-eval-after-load 'python
     (remove-hook 'python-mode-hook 'python)
