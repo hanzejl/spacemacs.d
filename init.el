@@ -386,13 +386,7 @@ you should place your code here."
   (add-hook 'text-mode-hook 'turn-on-fci-mode)
   (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
 
-  (add-hook 'css-mode-hook 'rainbow-mode)
-
-  (with-eval-after-load 'python
-    (remove-hook 'python-mode-hook 'python)
-    (setq python-shell-interpreter "ipython"
-          python-shell-interpreter-args "-i --simple-prompt --pprint")
-    (setq python-shell-completion-native nil))
+  (add-hook 'web-mode-hook 'rainbow-mode)
   )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
