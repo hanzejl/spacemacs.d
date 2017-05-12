@@ -62,15 +62,16 @@ values."
                         layouts-autosave-delay 300)
 
      ;; classic language
+     rust
      c-c++
 
      ;; web * app language
      html
      javascript
-     ruby-on-rails
 
      ;; script language
      ruby
+     ruby-on-rails
      python
      ;; scheme
      shell-scripts
