@@ -71,7 +71,7 @@ values."
 
      ;; script language
      ruby
-     elixir
+     ;; elixir
      ruby-on-rails
      python
      ;; scheme
