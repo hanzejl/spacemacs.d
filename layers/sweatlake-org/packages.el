@@ -40,7 +40,6 @@
   (use-package hexo
     :config (progn
               (setq hexo-new-format 'org)
-              (spacemacs/set-leader-keys "abh" 'sweatlake/hexo-relume-me)
               )
     ))
 
