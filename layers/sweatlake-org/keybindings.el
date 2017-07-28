@@ -12,8 +12,7 @@
 ;; A complementary binding to the apropos-command (C-h a)
 
 (spacemacs/declare-prefix "ab" "blog")
-(spacemacs/set-leader-keys "abh" 'sweatlake/hexo-relume-me)
-
+(spacemacs/set-leader-keys "abb" 'sweatlake/hexo-relume-me)
 
 (spacemacs/set-leader-keys-for-major-mode 'org-mode
   "ic" 'sweatlake/org-insert-src-block)

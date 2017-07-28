@@ -39,8 +39,7 @@
 (defun sweatlake-org/init-hexo ()
   (use-package hexo
     :config (progn
-              (setq hexo-new-format 'org)
-              )
+              (setq hexo-new-format 'org))
     ))
 
 
