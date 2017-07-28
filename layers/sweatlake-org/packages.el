@@ -31,14 +31,27 @@
 
 (defconst sweatlake-org-packages
   '((org :location built-in)
-    blog-admin
     org-pomodoro
+    hexo
+    ))
+
+
+(defun sweatlake-org/init-hexo ()
+  (use-package hexo
+    :config (progn
+              (setq hexo-new-format 'org)
+              (spacemacs/set-leader-keys "abh" 'sweatlake/hexo-relume-me)
+              )
     ))
 
 
 (defun sweatlake-org/post-init-org-pomodoro ()
   (use-package org-pomodoro
     :config (progn
+              (spacemacs/set-leader-keys-for-major-mode 'org-mode
+                "p" 'org-pomodoro)
+              (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
+                "p" 'org-pomodoro)
               (setq
                org-pomodoro-format "§·%s"
                org-pomodoro-short-break-format "♨·%s"
@@ -57,9 +70,9 @@
                           (sweatlake/terminal-notify-osx "Long Break"
                                                          "Ready to Go?")))
               (add-hook 'org-pomodoro-killed-hook
-                        (lambda ()
-                          (sweatlake/terminal-notify-osx "Pomodoro Killed"
-                                                         "One does not simply kill a pomodoro!")))
+                        (lambda () (sweatlake/terminal-notify-osx
+                                    "Pomodoro Killed"
+                                    "One does not simply kill a pomodoro!")))
       )))
 
 (defun sweatlake-org/post-init-org()
@@ -79,49 +92,54 @@
 
        org-export-with-priority t
 
-       org-agenda-files '("~/work/Dropbox/life/gtd/")
+       org-agenda-files '("~/work/Dropbox/vitae/gtd/")
        ;; variables about the org-capture directory
-       org-capture-directory "~/work/Dropbox/life/capture/"
+       org-capture-directory "~/work/Dropbox/vitae/capture/"
        org-default-notes-files (concat org-capture-directory "/todo.org")
        org-html-htmlize-output-type 'css
        )
 
       (defadvice org-html-paragraph (before org-html-paragraph-advice
                                             (paragraph contents info) activate)
-        "Join consecutive Chinese lines into a single long line without unwanted space when exporting org-mode to html."
+        "Join consecutive Chinese lines into a single long "
+        "line without unwanted space when exporting org-mode to html."
         (let* ((origin-contents (ad-get-arg 1))
                (fix-regexp "[[:multibyte:]]")
                (fixed-contents
                 (replace-regexp-in-string
                  (concat
-                  "\\(" fix-regexp "\\) *\n *\\(" fix-regexp "\\)") "\\1\\2" origin-contents)))
+                  "\\(" fix-regexp "\\) *\n *\\(" fix-regexp "\\)") "\\1\\2"
+                  origin-contents)))
           (ad-set-arg 1 fixed-contents)))
 
       ;; variables about the TODO Keywords
       (setq-default
-       org-todo-keywords (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
-                                 (sequence "WAITING(w@/!)" "HOLD(h@/!)"
-                                           "PROJECT(p@)" "|" "CANCELLED(c@/!)" "|" "CLOSED(s@/!)"
-                                           "PHONE" "METTING")))
+       org-todo-keywords
+       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
+               (sequence "WAITING(w@/!)" "HOLD(h@/!)"
+                         "PROJECT(p@)" "|" "CANCELLED(c@/!)" "|" "CLOSED(s@/!)"
+                         "PHONE" "METTING")))
 
-       org-todo-keyword-faces (quote (("TODO" :foreground "red" :weight bold)
-                                      ("NEXT" :foreground "blue" :weight bold)
-                                      ("DONE" :foreground "forest green" :weight bold)
-                                      ("WAITING" :foreground "orange" :weight bold)
-                                      ("HOLD" :foreground "magenta" :weight bold)
-                                      ("CANCELLED" :foreground "forest green" :weight bold)
-                                      ("CLOSED" :foreground "forest green" :weight bold)
-                                      ("MEETING" :foreground "forest green" :weight bold)
-                                      ("PHONE" :foreground "forest green" :weight bold)))
+       org-todo-keyword-faces
+       (quote (("TODO" :foreground "red" :weight bold)
+               ("NEXT" :foreground "blue" :weight bold)
+               ("DONE" :foreground "forest green" :weight bold)
+               ("WAITING" :foreground "orange" :weight bold)
+               ("HOLD" :foreground "magenta" :weight bold)
+               ("CANCELLED" :foreground "forest green" :weight bold)
+               ("CLOSED" :foreground "forest green" :weight bold)
+               ("MEETING" :foreground "forest green" :weight bold)
+               ("PHONE" :foreground "forest green" :weight bold)))
 
-       org-todo-state-tags-triggers (quote (("CANCELLED" ("CANCELLED" . t))
-                                            ("WAITING" ("WAITING" . t))
-                                            ("CLOSED" ("CLOSED" . t))
-                                            ("HOLD" ("WAITING") ("HOLD" . t))
-                                            ("DONE" ("WAITING") ("HOLD"))
-                                            ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
-                                            ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
-                                            ("DONE" ("WAITING") ("CANCELLED") ("HOLD"))))
+       org-todo-state-tags-triggers
+       (quote (("CANCELLED" ("CANCELLED" . t))
+               ("WAITING" ("WAITING" . t))
+               ("CLOSED" ("CLOSED" . t))
+               ("HOLD" ("WAITING") ("HOLD" . t))
+               ("DONE" ("WAITING") ("HOLD"))
+               ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
+               ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+               ("DONE" ("WAITING") ("CANCELLED") ("HOLD"))))
        )
 
       ;; variables about the org-priority
@@ -207,19 +225,5 @@
       ;; 可以設定任何 ID 或是設成 nil 來使用對稱式加密 (symmetric encryption)
       (setq org-crypt-key nil)
       )))
-
-
-(defun sweatlake-org/init-blog-admin ()
-  (use-package blog-admin
-    :config (progn
-              (setq blog-admin-backend-type 'hexo
-                    blog-admin-backend-path "~/work/Dropbox/blog"
-                    blog-admin-backend-new-post-in-drafts t
-                    blog-admin-backend-new-post-with-same-name-dir nil
-                    blog-admin-backend-hexo-config-file "_config.yml")
-              (spacemacs/set-leader-keys "abb" 'blog-admin-start)
-              (add-hook 'blog-admin-backend-after-new-post-hook 'find-file)
-              (setq blog-admin-backend-hexo-template-org-post  ;; post模板
-                    "#+TITLE: %s\n#+AUTHOR: 張榮\n#+EMAIL: hanzejl@gmail.com\n#+DATE: %s\n#+LAYOUT: post\n#+TAGS:\n#+CATEGORIES:\n#+DESCRIPTON: \n"))))
 
 ;;; packages.el ends here

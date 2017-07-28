@@ -36,71 +36,88 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     spacemacs-editing-visual
+
      helm
      auto-completion
      better-defaults
-     chinese
-
-     osx
-     chrome
+     (chinese :packages youdao-dictionary fcitx
+              :variables chinese-enable-fcitx nil
+              chinese-enable-youdao-dict t)
 
      colors
      (colors :variables
              colors-enable-rainbow-indentifiers t)
-     ;; (colors :variables
-             ;; colors-enable-nyan-cat-progress-bar t)
 
+     prodigy
+     graphviz
+     plantuml
      syntax-checking
-
-     git
-     version-control
-
-     finance
-     mu4e
-
+     (spell-checking :variables spell-checking-enable-by-default nil)
+     (vinegar :variables vinegar-reuse-dired-buffer t)
      (spacemacs-layouts :variables layouts-enable-autosave nil
                         layouts-autosave-delay 300)
+     (git :variables
+          git-magit-status-fullscreen t
+          magit-push-always-verify nil
+          magit-save-repository-buffers 'dontask
+          magit-revert-buffers 'silent
+          magit-refs-show-commit-count 'all
+          magit-revision-show-gravatars nil)
+     version-control
 
-     ;; classic language
-     rust
-     c-c++
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
+     auto-completion
+     osx
+     restclient
+     shell
+     docker
 
-     ;; web * app language
+     finance
+     games
+
+     ;; functional programming
+     scheme                             ; for learning sicp
+     haskell                            ; just for learning fp
+     elixir                             ; for phoenix web
+     erlang                             ; for elixir otp
+     emacs-lisp                         ; emacs-lisp script
+     common-lisp                        ; for ai in common-lisp
+
+     ;; oo programming
+     go
+     rust                               ; langurage for os, network
+     (c-c++ :variables                  ; first learning langurage
+            c-c++-default-mode-for-headers 'c++-mode)
+
+     ;; script langurage
+     python
+     ipython-notebook
+     (ruby :variables ruby-version-manager 'chruby)
+     ruby-on-rails
+     shell-scripts
+
+     ;; web fontend
      html
      javascript
 
-     ;; script language
-     ruby
-     ;; elixir
-     ruby-on-rails
-     python
-     ;; scheme
-     shell-scripts
-
-     ;; vim & emacs ... scripts
-     emacs-lisp
-     docker
-
-     ;; graph language
-     plantuml
-     graphviz
-
-     ;; markup language
-     csv
-     (org :variables org-enable-github-support t)
-     yaml
-     latex
-     markdown
-
-     ;; database language
+     ;; data analysis and statistics
+     ess
      sql
 
-     ;; tools
-     pandoc
-     imenu-list
+     ;; latex
+     markdown
+     org
+     yaml
 
-     ;; fun
-     games
+     ;; vim enhance
+     evil-commentary
+
+     ;; web layers
+     (elfeed :variables
+             rmh-elfeed-org-files (list "~/.spacemacs.d/elfeeds/test.org")
+             url-queue-timeout 30)
+     search-engine
 
      ;; own layers
      sweatlake
@@ -203,11 +220,12 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Inziu Iosevka TC"
-                               :size 14
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 12
                                :weight normal
                                :width normal
                                :powerline-scale 1.2)
+
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -367,6 +385,30 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+
+  ;; python unicode error with flake8
+  (setenv "PYTHONIOENCODING" "utf8")
+
+  ;; org-mode chinese alignment
+  (defun org-mode-buffer-font-fixed ()
+    (interactive)
+    (setq buffer-face-mode-face '(:family "Inziu Iosevka TC"))
+    (buffer-face-mode))
+  (add-hook 'org-mode-hook 'org-mode-buffer-font-fixed)
+
+  (add-hook 'text-mode-hook 'turn-on-auto-fill)
+
+  ;; add 80 line for programming mode
+  (add-hook 'prog-mode-hook 'turn-on-fci-mode)
+  (add-hook 'text-mode-hook 'turn-on-fci-mode)
+  (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
+
+  ;; add color display for web-mode
+  (add-hook 'web-mode-hook 'rainbow-mode)
+
+  (remove-hook 'anaconda-mode-response-read-fail-hook
+               'anaconda-mode-show-unreadable-response)
+
   (setq configuration-layer--elpa-archives
         '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
           ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
@@ -382,7 +424,7 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
-  (setq powerline-default-separator 'arrow)
+  (setq powerline-default-separator 'nil)
 
   (add-hook 'prog-mode-hook 'turn-on-fci-mode)
   (add-hook 'text-mode-hook 'turn-on-fci-mode)
