@@ -9,7 +9,10 @@
 ;;
 ;;; License: GPLv3
 
-(configuration-layer/declare-layers '(
-                                      sweatlake-org
-                                      sweatlake-evil
-                                      ))
+(configuration-layer/declare-layers
+ '(
+   sweatlake-org
+   sweatlake-evil
+   sweatlake-tools
+   sweatlake-better-defaults
+   ))

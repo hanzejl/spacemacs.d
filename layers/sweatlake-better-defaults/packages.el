@@ -42,17 +42,22 @@
       (require 'dired-x)
       (require 'dired-aux)
       (setq dired-guess-shell-alist-user
-            '(("\\.pdf\\" "open")
+            '(("\\.pdf\\'" "open")
               ("\\.docx\\'" "open")
               ("\\.\\(?:djvu\\|eps\\)\\'" "open")
               ("\\.\\(?:jpg\\|jpeg\\|png\\|gif\\|xpm\\)\\'" "open")
+              ("\\.\\(?:xcf\\)\\'" "open")
+              ("\\.csv\\'" "open")
+              ("\\.tex\\'" "open")
               ("\\.\\(?:mp4\\|mkv\\|avi\\|flv\\|ogv\\)\\(?:\\.part\\)?\\'"
                "open")
               ("\\.\\(?:mp3\\|flac\\)\\'" "open")
-              ))
+              ("\\.html?\\'" "open")
+              ("\\.md\\'" "open")))
 
       (setq dired-omit-files
-            concat(dired-omit-files "\\|.^DS_STORE$|^.projectile$"))
+            (concat dired-omit-files
+                    "\\|^.DS_Store$\\|^.projectile$\\|\\.js\\.meta$\\|\\.meta$"))
 
       (put 'dired-find-alternate-file 'disabled nil)
       (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
