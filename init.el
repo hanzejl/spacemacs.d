@@ -30,7 +30,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(sql
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -103,7 +103,6 @@ values."
 
      ;; data analysis and statistics
      ess
-     sql
 
      ;; latex
      markdown
@@ -121,6 +120,7 @@ values."
 
      ;; own layers
      sweatlake
+     sweatlake-sql
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -144,8 +144,7 @@ values."
                                     org-plus-contrib
                                     org-tree-slide
                                     git-gutter
-                                    git-gutter-fringe
-                                    )
+                                    git-gutter-fringe)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -430,6 +429,8 @@ you should place your code here."
   (add-hook 'prog-mode-hook 'turn-on-fci-mode)
   (add-hook 'text-mode-hook 'turn-on-fci-mode)
   (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
+
+  (add-hook 'sql-mode-hook 'sqlind-minor-mode)
 
   (add-hook 'web-mode-hook 'rainbow-mode)
   )
