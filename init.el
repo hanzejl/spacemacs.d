@@ -405,6 +405,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; add color display for web-mode
   (add-hook 'web-mode-hook 'rainbow-mode)
+  (add-hook 'scss-mode-hook 'rainbow-mode)
 
   (remove-hook 'anaconda-mode-response-read-fail-hook
                'anaconda-mode-show-unreadable-response)
