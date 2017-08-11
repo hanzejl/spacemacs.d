@@ -112,9 +112,6 @@ values."
      evil-commentary
 
      ;; web layers
-     (elfeed :variables
-             rmh-elfeed-org-files (list "~/.spacemacs.d/elfeeds/test.org")
-             url-queue-timeout 30)
      search-engine
 
      ;; own layers
@@ -135,6 +132,7 @@ values."
                                     git-timemachine
                                     git-messenger
                                     helm-gitignore
+                                    pip-requirements
                                     smeargle
                                     eyebrowse
                                     org-repo-todo
