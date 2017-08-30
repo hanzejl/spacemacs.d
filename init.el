@@ -209,9 +209,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         leuven
-                         spacemacs-light)
+   dotspacemacs-themes '(spacemacs-light
+                         spacemacs-dark
+                         leuven)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -423,12 +423,14 @@ you should place your code here."
   (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
   (setq powerline-default-separator 'nil)
 
+  ;; highlight indentation face
+  (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+
   (add-hook 'prog-mode-hook 'turn-on-fci-mode)
   (add-hook 'text-mode-hook 'turn-on-fci-mode)
   (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
 
   (add-hook 'sql-mode-hook 'sqlind-minor-mode)
-
   (add-hook 'web-mode-hook 'rainbow-mode)
   )
 
