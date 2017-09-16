@@ -423,6 +423,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
   (setq powerline-default-separator 'nil)
+  (setq spaceline-minor-modes-p 'nil)
 
   ;; highlight indentation face
   (add-hook 'prog-mode-hook 'highlight-indentation-mode)
