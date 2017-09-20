@@ -105,6 +105,7 @@ values."
      ess
 
      ;; latex
+     csv
      markdown
      org
      yaml
