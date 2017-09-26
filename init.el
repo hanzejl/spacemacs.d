@@ -105,7 +105,7 @@ values."
      ;; data analysis and statistics
      ess
 
-     ;; latex
+     latex
      csv
      markdown
      org
