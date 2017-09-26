@@ -426,6 +426,8 @@ you should place your code here."
   (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
   (setq powerline-default-separator 'nil)
   (setq spaceline-minor-modes-p 'nil)
+  (setq user-full-name "张荣")
+  (setq default-directory "~")
 
   ;; highlight indentation face
   (add-hook 'prog-mode-hook 'highlight-indentation-mode)

@@ -33,7 +33,6 @@
 
 (defun sweatlake-evil/post-init-evil()
   (progn
-    (setq default-directory "~/work/")
 
     (loop for (mode . state) in
           '((minibuffer-inactive-mode . emacs)
