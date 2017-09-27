@@ -86,7 +86,6 @@ values."
      ;; oo programming
      go
      java
-     swift
      rust                               ; langurage for os, network
      (c-c++ :variables                  ; first learning langurage
             c-c++-default-mode-for-headers 'c++-mode)
@@ -427,7 +426,7 @@ you should place your code here."
   (setq powerline-default-separator 'nil)
   (setq spaceline-minor-modes-p 'nil)
   (setq user-full-name "张荣")
-  (setq default-directory "~")
+  (setq default-directory "~/")
 
   ;; highlight indentation face
   (add-hook 'prog-mode-hook 'highlight-indentation-mode)
