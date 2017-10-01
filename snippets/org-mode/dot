@@ -1,0 +1,6 @@
+#name : graphviz-dot
+#contributor : zhangrong <hanzejl@gmail.com>
+# --
+#+HEADER: :exports results
+#+BEGIN_SRC dot :file imgs/${1:export-file-name}.png :cmdline -Kdot -Tpng
+#+END_SRC

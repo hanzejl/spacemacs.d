@@ -211,8 +211,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
-                         spacemacs-dark
+   dotspacemacs-themes '(spacemacs-dark
+                         spacemacs-light
                          leuven)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -427,6 +427,8 @@ you should place your code here."
   (setq spaceline-minor-modes-p 'nil)
   (setq user-full-name "张荣")
   (setq default-directory "~/")
+
+  (add-to-list 'yas-snippet-dirs "~/.spacemacs.d/snippets")
 
   ;; highlight indentation face
   (add-hook 'prog-mode-hook 'highlight-indentation-mode)

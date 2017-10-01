@@ -1,0 +1,7 @@
+#name : more-in-blog
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# --
+#+BEGIN_EXPORT html
+<!--more-->
+#+END_EXPORT
+
