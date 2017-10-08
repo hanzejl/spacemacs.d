@@ -109,6 +109,9 @@ values."
      org
      yaml
 
+     ranger
+     emoji
+
      ;; vim enhance
      evil-commentary
 
