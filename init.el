@@ -85,7 +85,6 @@ values."
 
      ;; oo programming
      go
-     java
      rust                               ; langurage for os, network
      (c-c++ :variables                  ; first learning langurage
             c-c++-default-mode-for-headers 'c++-mode)
