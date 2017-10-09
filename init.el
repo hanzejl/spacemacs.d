@@ -112,9 +112,6 @@ values."
      ranger
      emoji
 
-     ;; vim enhance
-     evil-commentary
-
      ;; web layers
      search-engine
 
