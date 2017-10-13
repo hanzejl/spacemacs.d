@@ -84,6 +84,10 @@ values."
      common-lisp                        ; for ai in common-lisp
 
      ;; oo programming
+     ;; java
+     ;; (java :variables java-backend 'eclim
+     ;;       eclim-eclipse-dirs '("/Applications/Eclipse-JEE.app/Contents/Eclipse")
+     ;;       eclim-executable "/Applications/Eclipse-JEE.app/Contents/Eclipse/eclim")
      go
      rust                               ; langurage for os, network
      (c-c++ :variables                  ; first learning langurage
@@ -99,9 +103,11 @@ values."
      ;; web fontend
      html
      javascript
+     protobuf
 
      ;; data analysis and statistics
      ess
+     major-modes
 
      latex
      csv
@@ -128,6 +134,7 @@ values."
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(pangu-spacing
+                                    wolfram-mode
                                     magit-gh-pulls
                                     magit-gitflow
                                     git-timemachine
@@ -426,6 +433,10 @@ you should place your code here."
   (setq spaceline-minor-modes-p 'nil)
   (setq user-full-name "张荣")
   (setq default-directory "~/")
+
+  (setq
+   eclimd-default-workspace "~/Developer/java/"
+   eclimd-autostart t)
 
   (add-to-list 'yas-snippet-dirs "~/.spacemacs.d/snippets")
 
