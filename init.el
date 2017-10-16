@@ -438,7 +438,7 @@ you should place your code here."
   (setq
    eclimd-default-workspace "~/Developer/java/"
    eclimd-autostart t)
-  (setq deft-directory "~/work/Dropbox/vitae/capture")
+  (setq deft-directory "~/work/Dropbox/wiki/notes")
 
   (add-to-list 'yas-snippet-dirs "~/.spacemacs.d/snippets")
 
