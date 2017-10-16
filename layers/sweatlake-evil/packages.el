@@ -67,8 +67,8 @@
             (js2-error-buffer-mode . emacs)
 
             ;; add by my self
-            (org-mode . emacs)
-            (markdown-mode . emacs)
+            ;; (org-mode . emacs)
+            ;; (markdown-mode . emacs)
             (hexo-mode . emacs)
 
             ;; some interactive mode
