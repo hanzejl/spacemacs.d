@@ -111,7 +111,7 @@ values."
 
      latex
      csv
-     markdown
+     (markdown :variables markdown-live-preview-engine 'vmd)
      org
      yaml
 
