@@ -1,4 +1,4 @@
-#+AUTHOR: 張榮（汗澤-sweatlake）
+#+AUTHOR: 张荣
 #+OPTIONS: ':nil *:t -:t ::t <:t H:4 \n:nil ^:nil arch:headline author:t
 #+OPTIONS: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
 #+OPTIONS: email:nil f:t inline:t num:t p:nil pri:t prop:nil stat:t tags:t
@@ -7,7 +7,6 @@
 #+LANGUAGE: zh-TW
 #+SELECT_TAGS: export
 #+EXCLUDE_TAGS: noexport
-#+CREATOR: Emacs 25.1.1 (Org mode 9.0.1)
 #+PROPERTY: header-args :exports code
 
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/styles/css/htmlize.css"/>
