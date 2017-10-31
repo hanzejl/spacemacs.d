@@ -391,6 +391,11 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
+  (setq configuration-layer--elpa-archives
+        '(("melpa" . "https://elpa.emacs-china.org/melpa/")
+          ("org"   . "https://elpa.emacs-china.org/org/")
+          ("gnu"   . "https://elpa.emacs-china.org/gnu/")))
+  
   ;; python unicode error with flake8
   (setenv "PYTHONIOENCODING" "utf8")
 
@@ -415,10 +420,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (remove-hook 'anaconda-mode-response-read-fail-hook
                'anaconda-mode-show-unreadable-response)
 
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
   (setq exec-path-from-shell-check-startup-files nil)
   )
 
