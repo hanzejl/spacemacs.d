@@ -90,9 +90,9 @@
 
        org-export-with-priority t
 
-       org-agenda-files '("~/work/Dropbox/vitae/gtd/")
+       org-agenda-files '("~/Developer/munger/vitae/gtd/")
        ;; variables about the org-capture directory
-       org-capture-directory "~/work/Dropbox/vitae/capture/"
+       org-capture-directory "~/Developer/munger/vitae/capture/"
        org-default-notes-files (concat org-capture-directory "/todo.org")
        org-html-htmlize-output-type 'css
        )

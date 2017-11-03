@@ -439,7 +439,7 @@ you should place your code here."
   (setq
    eclimd-default-workspace "~/Developer/java/"
    eclimd-autostart t)
-  (setq deft-directory "~/work/Dropbox/wiki/notes")
+  (setq deft-directory "~/Developer/munger/wiki/notes")
 
   (add-to-list 'yas-snippet-dirs "~/.spacemacs.d/snippets")
 
