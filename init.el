@@ -112,7 +112,9 @@ values."
      latex
      csv
      (markdown :variables markdown-live-preview-engine 'vmd)
-     org
+     (org :variables
+          org-enable-reveal-js-support t
+          org-enable-org-journal-support t)
      yaml
 
      deft
@@ -436,10 +438,10 @@ you should place your code here."
   (setq user-full-name "张荣")
   (setq default-directory "~/")
 
-  (setq
-   eclimd-default-workspace "~/Developer/java/"
-   eclimd-autostart t)
-  (setq deft-directory "~/Developer/munger/wiki/notes")
+  (setq deft-directory "~/Developer/munger/wiki/notes"
+        org-journal-dir "~/org/journal/"
+        org-journal-file-format "%Y-%m-%d"
+        org-reveal-root "http://localhost:8000/")
 
   (add-to-list 'yas-snippet-dirs "~/.spacemacs.d/snippets")
 
