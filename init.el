@@ -394,10 +394,43 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
   (setq configuration-layer--elpa-archives
-        '(("melpa" . "https://elpa.emacs-china.org/melpa/")
-          ("org"   . "https://elpa.emacs-china.org/org/")
-          ("gnu"   . "https://elpa.emacs-china.org/gnu/")))
+        '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
+          ("org-cn"   . "http://elpa.emacs-china.org/org/")
+          ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
   
+  (setq exec-path-from-shell-check-startup-files nil)
+  )
+
+(defun dotspacemacs/user-config ()
+  "Configuration function for user code.
+This function is called at the very end of Spacemacs initialization after
+layers configuration.
+This is the place where most of your configurations should be done. Unless it is
+explicitly specified that a variable should be set before a package is loaded,
+you should place your code here."
+  (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
+  (setq powerline-default-separator 'nil)
+  (setq spaceline-minor-modes-p 'nil)
+  (setq user-full-name "张荣")
+  (setq default-directory "~/")
+
+  (setq deft-directory "~/Developer/munger/wiki/notes/"
+        org-journal-dir "~/Developer/munger/vitae/journal/"
+        org-journal-file-format "%Y-%m-%d"
+        org-reveal-root "http://localhost:8000/")
+
+  (add-to-list 'yas-snippet-dirs "~/.spacemacs.d/snippets")
+
+  ;; highlight indentation face
+  (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+
+  (add-hook 'prog-mode-hook 'turn-on-fci-mode)
+  (add-hook 'text-mode-hook 'turn-on-fci-mode)
+  (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
+
+  (add-hook 'sql-mode-hook 'sqlind-minor-mode)
+  (add-hook 'web-mode-hook 'rainbow-mode)
+
   ;; python unicode error with flake8
   (setenv "PYTHONIOENCODING" "utf8")
 
@@ -421,39 +454,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (remove-hook 'anaconda-mode-response-read-fail-hook
                'anaconda-mode-show-unreadable-response)
-
-  (setq exec-path-from-shell-check-startup-files nil)
-  )
-
-(defun dotspacemacs/user-config ()
-  "Configuration function for user code.
-This function is called at the very end of Spacemacs initialization after
-layers configuration.
-This is the place where most of your configurations should be done. Unless it is
-explicitly specified that a variable should be set before a package is loaded,
-you should place your code here."
-  (define-key spacemacs-buffer-mode-map [down-mouse-1] nil)
-  (setq powerline-default-separator 'nil)
-  (setq spaceline-minor-modes-p 'nil)
-  (setq user-full-name "张荣")
-  (setq default-directory "~/")
-
-  (setq deft-directory "~/Developer/munger/wiki/notes"
-        org-journal-dir "~/org/journal/"
-        org-journal-file-format "%Y-%m-%d"
-        org-reveal-root "http://localhost:8000/")
-
-  (add-to-list 'yas-snippet-dirs "~/.spacemacs.d/snippets")
-
-  ;; highlight indentation face
-  (add-hook 'prog-mode-hook 'highlight-indentation-mode)
-
-  (add-hook 'prog-mode-hook 'turn-on-fci-mode)
-  (add-hook 'text-mode-hook 'turn-on-fci-mode)
-  (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
-
-  (add-hook 'sql-mode-hook 'sqlind-minor-mode)
-  (add-hook 'web-mode-hook 'rainbow-mode)
   )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
