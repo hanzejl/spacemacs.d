@@ -12,7 +12,7 @@
 
 (defun sweatlake/hexo-relume-me ()
   (interactive)
-  (hexo "~/work/Dropbox/blog/"))
+  (hexo "~/Developer/munger/blog"))
 
 
 (defun sweatlake/terminal-notify-osx (title message)

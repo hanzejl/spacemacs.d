@@ -132,7 +132,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(ox-hugo)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -440,6 +440,10 @@ you should place your code here."
     (setq buffer-face-mode-face '(:family "Inziu Iosevka TC"))
     (buffer-face-mode))
   (add-hook 'org-mode-hook 'org-mode-buffer-font-fixed)
+
+  (use-package ox-hugo
+    :ensure t
+    :after ox)
 
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
