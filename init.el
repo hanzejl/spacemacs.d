@@ -132,7 +132,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(ox-hugo)
+   dotspacemacs-additional-packages '()
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -151,6 +151,8 @@ values."
                                     org-timer
                                     org-plus-contrib
                                     org-tree-slide
+                                    smooth-scrolling
+                                    org-projectile
                                     git-gutter
                                     git-gutter-fringe)
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -399,6 +401,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
           ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
   
   (setq exec-path-from-shell-check-startup-files nil)
+
+  ;; https://github.com/syl20bnr/spacemacs/issues/2705
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   )
 
 (defun dotspacemacs/user-config ()
@@ -440,10 +446,6 @@ you should place your code here."
     (setq buffer-face-mode-face '(:family "Inziu Iosevka TC"))
     (buffer-face-mode))
   (add-hook 'org-mode-hook 'org-mode-buffer-font-fixed)
-
-  (use-package ox-hugo
-    :ensure t
-    :after ox)
 
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
