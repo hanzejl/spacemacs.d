@@ -31,13 +31,18 @@
 
 (defconst sweatlake-prog-packages
   '(
-    (sql-indent :location (recipe :fetcher github
-                                  :repo "alex-hhh/emacs-sql-indent"))
+    rjsx-mode
   ))
 
 
-(defun sweatlake-prog/post-init-sql-indent ()
-  (use-package sql-indent
+(defun sweatlake-prog/init-rjsx-mode ()
+  (use-package rjsx-mode
+    :defer t
+    :init
+    (progn
+      (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+      ;; Required to make imenu functions work correctly
+      )
     ))
 
 ;;; packages.el ends here
