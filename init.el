@@ -103,6 +103,7 @@ values."
      ;; web fontend
      html
      javascript
+     typescript
      protobuf
 
      ;; data analysis and statistics
