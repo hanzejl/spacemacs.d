@@ -124,6 +124,7 @@ values."
 
      ;; web layers
      search-engine
+     restclient
 
      ;; own layers
      sweatlake
