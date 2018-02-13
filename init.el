@@ -140,6 +140,10 @@ values."
    dotspacemacs-excluded-packages '(pangu-spacing
                                     wolfram-mode
                                     window-purpose
+                                    helm-purpose
+                                    helm-flyspell
+                                    flyspell-correct-helm
+                                    clean-aindent-mode
                                     spacemacs-purpose-popwin
                                     magit-gh-pulls
                                     magit-gitflow
@@ -149,12 +153,29 @@ values."
                                     pip-requirements
                                     smeargle
                                     eyebrowse
+                                    livid-mode
+                                    evil-lisp-state
+                                    evil-mc
+                                    evil-args
+                                    evil-ediff
+                                    evil-exchange
+                                    evil-unimpaired
+                                    evil-indent-plus
+                                    volatile-highlights
+                                    vi-tilde-fringe
+                                    eyebrowse
+                                    ivy-purpose
+                                    helm-purpose
+                                    company-quickhelp
+                                    define-word
+                                    holy-mode
+                                    skewer-mode
+                                    rainbow-delimiters
                                     org-repo-todo
                                     smooth-scrolling
                                     org-timer
                                     org-plus-contrib
                                     org-tree-slide
-                                    smooth-scrolling
                                     org-projectile
                                     git-gutter
                                     git-gutter-fringe)
