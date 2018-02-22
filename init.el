@@ -37,7 +37,7 @@ values."
      ;; ----------------------------------------------------------------
      spacemacs-editing-visual
 
-     helm
+     ivy
      auto-completion
      better-defaults
      (chinese :packages youdao-dictionary fcitx
@@ -419,10 +419,10 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-          ("org-cn"   . "http://elpa.emacs-china.org/org/")
-          ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+  (setq configuration-layer-elpa-archives
+        '(("melpa-cn" . "https://elpa.emacs-china.org/melpa/")
+          ("org-cn"   . "https://elpa.emacs-china.org/org/")
+          ("gnu-cn"   . "https://elpa.emacs-china.org/gnu/")))
   
   (setq exec-path-from-shell-check-startup-files nil)
 
@@ -443,6 +443,8 @@ you should place your code here."
   (setq spaceline-minor-modes-p 'nil)
   (setq user-full-name "张荣")
   (setq default-directory "~/")
+
+  (setq shell-file-name "/bin/sh")
 
   (setq deft-directory "~/Developer/munger/wiki/notes/"
         org-journal-dir "~/Developer/munger/vitae/journal/"
