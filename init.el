@@ -95,6 +95,7 @@ values."
 
      ;; script langurage
      python
+     lua
      ipython-notebook
      (ruby :variables ruby-version-manager 'chruby)
      ruby-on-rails
@@ -409,6 +410,8 @@ values."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup 'nil
+
+   dotspacemacs-mode-line-theme 'spacemacs
    ))
 
 (defun dotspacemacs/user-init ()
@@ -425,6 +428,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
           ("gnu-cn"   . "https://elpa.emacs-china.org/gnu/")))
   
   (setq exec-path-from-shell-check-startup-files nil)
+
+  (setq byte-compile-warnings '(not obsolete))
+  (setq warning-minimum-level :error)
 
   ;; https://github.com/syl20bnr/spacemacs/issues/2705
   (setq tramp-ssh-controlmaster-options
@@ -454,7 +460,7 @@ you should place your code here."
   (add-to-list 'yas-snippet-dirs "~/.spacemacs.d/snippets")
 
   ;; highlight indentation face
-  (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+  ;; (add-hook 'prog-mode-hook 'highlight-indentation-mode)
 
   (add-hook 'prog-mode-hook 'turn-on-fci-mode)
   (add-hook 'text-mode-hook 'turn-on-fci-mode)
@@ -486,6 +492,8 @@ you should place your code here."
 
   (remove-hook 'anaconda-mode-response-read-fail-hook
                'anaconda-mode-show-unreadable-response)
+
+  (spacemacs/toggle-highlight-current-line-globally-off)
   )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
