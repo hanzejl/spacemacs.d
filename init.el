@@ -145,7 +145,6 @@ values."
                                     helm-flyspell
                                     flyspell-correct-helm
                                     clean-aindent-mode
-                                    spacemacs-purpose-popwin
                                     magit-gh-pulls
                                     magit-gitflow
                                     git-timemachine
