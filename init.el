@@ -140,7 +140,6 @@ values."
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(pangu-spacing
                                     wolfram-mode
-                                    window-purpose
                                     helm-purpose
                                     helm-flyspell
                                     flyspell-correct-helm
@@ -470,6 +469,7 @@ you should place your code here."
 
   ;; python unicode error with flake8
   (setenv "PYTHONIOENCODING" "utf8")
+  (setq python-shell-interpreter "python3")
 
   ;; org-mode chinese alignment
   (defun org-mode-buffer-font-fixed ()
