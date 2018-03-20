@@ -81,13 +81,8 @@ values."
      elixir                             ; for phoenix web
      erlang                             ; for elixir otp
      emacs-lisp                         ; emacs-lisp script
-     common-lisp                        ; for ai in common-lisp
 
      ;; oo programming
-     ;; java
-     ;; (java :variables java-backend 'eclim
-     ;;       eclim-eclipse-dirs '("/Applications/Eclipse-JEE.app/Contents/Eclipse")
-     ;;       eclim-executable "/Applications/Eclipse-JEE.app/Contents/Eclipse/eclim")
      go
      rust                               ; langurage for os, network
      (c-c++ :variables                  ; first learning langurage
@@ -424,7 +419,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
         '(("melpa-cn" . "https://elpa.emacs-china.org/melpa/")
           ("org-cn"   . "https://elpa.emacs-china.org/org/")
           ("gnu-cn"   . "https://elpa.emacs-china.org/gnu/")))
-  
+
   (setq exec-path-from-shell-check-startup-files nil)
 
   (setq byte-compile-warnings '(not obsolete))
