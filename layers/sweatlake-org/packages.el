@@ -116,7 +116,7 @@
        (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
                (sequence "WAITING(w@/!)" "HOLD(h@/!)"
                          "PROJECT(p@)" "|" "CANCELLED(c@/!)" "|" "CLOSED(s@/!)"
-                         "PHONE" "METTING")))
+                         "METTING")))
 
        org-todo-keyword-faces
        (quote (("TODO" :foreground "red" :weight bold)
@@ -127,7 +127,7 @@
                ("CANCELLED" :foreground "forest green" :weight bold)
                ("CLOSED" :foreground "forest green" :weight bold)
                ("MEETING" :foreground "forest green" :weight bold)
-               ("PHONE" :foreground "forest green" :weight bold)))
+               ))
 
        org-todo-state-tags-triggers
        (quote (("CANCELLED" ("CANCELLED" . t))
