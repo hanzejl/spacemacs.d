@@ -14,6 +14,6 @@
    sweatlake-org
    sweatlake-evil
    sweatlake-tools
-   ;; sweatlake-prog
+   sweatlake-prog
    sweatlake-better-defaults
    ))
