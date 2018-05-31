@@ -118,7 +118,7 @@
 
         (setq elixir-format-arguments
               (list "--dot-formatter"
-                    "/Users/zr/Developer/formats/elixir/.formatter.exs"))
+                    "/Users/zr/Developer/formatter/elixir/.formatter.exs"))
         )
       ))
   )
