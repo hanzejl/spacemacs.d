@@ -45,33 +45,33 @@
 
 (defun sweatlake-org/post-init-org-pomodoro ()
   (use-package org-pomodoro
-    :config (progn
-              (spacemacs/set-leader-keys-for-major-mode 'org-mode
-                "p" 'org-pomodoro)
-              (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
-                "p" 'org-pomodoro)
-              (setq
-               org-pomodoro-format "§·%s"
-               org-pomodoro-short-break-format "♨·%s"
-               org-pomodoro-long-break-format "❆·%s")
+    :config              (progn
+               (spacemacs/set-leader-keys-for-major-mode 'org-mode
+                 "p" 'org-pomodoro)
+               (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
+                 "p" 'org-pomodoro)
+               (setq
+                org-pomodoro-format "§·%s"
+                org-pomodoro-short-break-format "♨·%s"
+                org-pomodoro-long-break-format "❆·%s")
 
-              (add-hook 'org-pomodoro-finished-hook
-                        (lambda ()
-                          (sweatlake/terminal-notify-osx "Pomodoro Finished"
-                                                         "Have a break!")))
-              (add-hook 'org-pomodoro-short-break-finished-hook
-                        (lambda ()
-                          (sweatlake/terminal-notify-osx "Short Break"
-                                                         "Ready to Go?")))
-              (add-hook 'org-pomodoro-long-break-finished-hook
-                        (lambda ()
-                          (sweatlake/terminal-notify-osx "Long Break"
-                                                         "Ready to Go?")))
-              (add-hook 'org-pomodoro-killed-hook
-                        (lambda () (sweatlake/terminal-notify-osx
-                                    "Pomodoro Killed"
-                                    "One does not simply kill a pomodoro!")))
-      )))
+               (add-hook 'org-pomodoro-finished-hook
+                         (lambda ()
+                           (sweatlake/terminal-notify-osx "Pomodoro Finished"
+                                                          "Have a break!")))
+               (add-hook 'org-pomodoro-short-break-finished-hook
+                         (lambda ()
+                           (sweatlake/terminal-notify-osx "Short Break"
+                                                          "Ready to Go?")))
+               (add-hook 'org-pomodoro-long-break-finished-hook
+                         (lambda ()
+                           (sweatlake/terminal-notify-osx "Long Break"
+                                                          "Ready to Go?")))
+               (add-hook 'org-pomodoro-killed-hook
+                         (lambda () (sweatlake/terminal-notify-osx
+                                     "Pomodoro Killed"
+                                     "One does not simply kill a pomodoro!")))))
+    )
 
 (defun sweatlake-org/post-init-org()
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
@@ -107,7 +107,7 @@
                 (replace-regexp-in-string
                  (concat
                   "\\(" fix-regexp "\\) *\n *\\(" fix-regexp "\\)") "\\1\\2"
-                  origin-contents)))
+                 origin-contents)))
           (ad-set-arg 1 fixed-contents)))
 
       ;; variables about the TODO Keywords
@@ -193,7 +193,7 @@
        'org-babel-load-languages
        '((perl . t)
          (ruby . t)
-         (sh . t)
+         (shell . t)
          (dot . t)
          (js . t)
          (latex .t)
@@ -202,7 +202,7 @@
          (plantuml . t)
          (C . t)
          (ditaa . t)))
- 
+      
       (setq org-confirm-babel-evaluate nil)
       (add-to-list 'org-src-lang-modes (quote ("dot" . graphviz-dot)))
 
