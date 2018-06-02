@@ -47,7 +47,7 @@
     :commands eslintd-fix-mode
     :init
     (progn
-      (add-hook 'rjsx-mode-hook #'eslintd-fix-mode t))))
+      (add-hook 'rjsx-mode-hook 'eslintd-fix-mode t))))
 
 (defun sweatlake-prog/init-rjsx-mode ()
   (use-package rjsx-mode
@@ -111,16 +111,12 @@
     (progn
       (setq-default elixir-format-elixir-path "/usr/local/bin/elixir"
                     elixir-format-mix-path "/usr/local/bin/mix")
-      (with-eval-after-load 'elixir-mode
-        (add-hook 'elixir-mode-hook
-                  (lambda () (add-hook 'before-save-hook
-                                       'elixir-format-before-save)))
+      (add-hook 'elixir-mode-hook
+                (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
 
-        (setq elixir-format-arguments
-              (list "--dot-formatter"
-                    "/Users/zr/Developer/formatter/elixir/.formatter.exs"))
-        )
-      ))
-  )
+      (setq elixir-format-arguments
+            (list "--dot-formatter"
+                  "/Users/zr/Developer/formatter/elixir/.formatter.exs"))
+      )))
 
 ;;; packages.el ends here
