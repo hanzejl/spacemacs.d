@@ -71,7 +71,7 @@
     :config
     (modify-syntax-entry ?_ "w" js2-mode-syntax-table)))
 
-(defun sweatlake-prog/post-init-add-node-modules-path ()
+(defun sweatlake-prog/init-add-node-modules-path ()
   (use-package add-node-modules-path
     :defer t
     :init
@@ -97,11 +97,19 @@
 
 
 (defun sweatlake-prog/init-prettier-js ()
-  (add-hook 'js2-mode-hook 'prettier-js-mode)
-  (add-hook 'typescript-mode-hook 'prettier-js-mode)
-  (add-hook 'json-mode-hook 'prettier-js-mode)
-  (add-hook 'web-mode-hook 'prettier-js-mode)
-  (add-hook 'rjsx-mode-hook 'prettier-js-mode)
+  (use-package prettier-js
+    :defer t
+    :init
+    (progn
+      (with-eval-after-load 'web-mode
+        (add-hook 'js2-mode-hook 'prettier-js-mode)
+        (add-hook 'typescript-mode-hook 'prettier-js-mode)
+        (add-hook 'json-mode-hook 'prettier-js-mode)
+        (add-hook 'web-mode-hook 'prettier-js-mode)
+        (add-hook 'rjsx-mode-hook 'prettier-js-mode)
+        )
+      )
+    )
   )
 
 (defun sweatlake-prog/init-elixir-format ()

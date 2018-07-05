@@ -100,8 +100,9 @@ values."
 
      ;; web fontend
      html
-     (node :variables
-           node-add-modules-path t)
+     ;; node
+     ;; (node :variables
+     ;;       node-add-modules-path t)
      javascript
      typescript
      protobuf
@@ -473,7 +474,14 @@ values."
    ;; If non-nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers t
+   dotspacemacs-line-numbers '(:relative nil
+                                         :disabled-for-modes dired-mode
+                                         doc-view-mode
+                                         markdown-mode
+                                         org-mode
+                                         pdf-view-mode
+                                         text-mode
+                                         :size-limit-kb 1000)
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -589,7 +597,9 @@ you should place your code here."
   (setq deft-directory "~/Developer/munger/wiki/notes/"
         org-journal-dir "~/Developer/munger/vitae/journal/"
         org-journal-file-format "%Y-%m-%d"
-        org-reveal-root "http://localhost:8000/")
+        org-reveal-root "http://localhost:8000/"
+        geiser-default-implementation "mit"
+        )
 
   (add-to-list 'yas-snippet-dirs "~/.spacemacs.d/snippets")
 
