@@ -46,15 +46,15 @@ values."
               :variables chinese-enable-fcitx nil
               chinese-enable-youdao-dict t)
 
-     colors
      (colors :variables
              colors-enable-rainbow-indentifiers t)
+     lsp
 
-     prodigy
      graphviz
-     plantuml
+     (plantuml :variables
+               plantuml-jar-path "~/.spacemacs.d/plantuml.jar"
+               org-plantuml-jar-path "~/.spacemacs.d/plantuml.jar")
      syntax-checking
-     (spell-checking :variables spell-checking-enable-by-default nil)
      (vinegar :variables vinegar-reuse-dired-buffer t)
      (spacemacs-layouts :variables layouts-enable-autosave nil
                         layouts-autosave-delay 300)
@@ -70,7 +70,7 @@ values."
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      auto-completion
      osx
-     restclient
+     ;; restclient
      shell
      docker
 
@@ -86,37 +86,41 @@ values."
 
      ;; oo programming
      go
-     rust                               ; langurage for os, network
+     rust
      (c-c++ :variables                  ; first learning langurage
             c-c++-default-mode-for-headers 'c++-mode)
+     (java :variables java-backend 'lsp)
 
      ;; script langurage
-     python
+     (python :variables python-backend 'lsp)
      lua
-     ipython-notebook
+     ;; ipython-notebook
      (ruby :variables ruby-version-manager 'chruby)
      ruby-on-rails
      shell-scripts
 
      ;; web fontend
      html
-     ;; node
-     ;; (node :variables
-     ;;       node-add-modules-path t)
-     javascript
-     typescript
+     tern
+     (node :variables
+           node-add-modules-path t)
+     (javascript :variables javascript-backend 'lsp)
+     (typescript :variables typescript-backend 'lsp)
      protobuf
 
      ;; data analysis and statistics
      ess
      major-modes
 
+     treemacs
+
      latex
      csv
      (markdown :variables markdown-live-preview-engine 'vmd)
      (org :variables
           org-enable-reveal-js-support t
-          org-enable-org-journal-support t)
+          org-enable-org-journal-support t
+          org-enable-hugo-support t)
      yaml
 
      deft
@@ -125,6 +129,8 @@ values."
 
      ;; web layers
      search-engine
+
+     themes-megapack
 
      ;; own layers
      sweatlake
@@ -140,18 +146,19 @@ values."
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(pangu-spacing
                                     wolfram-mode
-                                    helm-purpose
                                     helm-flyspell
                                     flyspell-correct-helm
                                     clean-aindent-mode
                                     magit-gh-pulls
                                     magit-gitflow
+                                    magit-svn
                                     git-timemachine
                                     git-messenger
                                     helm-gitignore
                                     pip-requirements
                                     smeargle
                                     eyebrowse
+                                    neotree
                                     livid-mode
                                     evil-lisp-state
                                     evil-mc
@@ -163,21 +170,32 @@ values."
                                     volatile-highlights
                                     vi-tilde-fringe
                                     eyebrowse
-                                    ivy-purpose
-                                    helm-purpose
                                     company-quickhelp
                                     define-word
                                     holy-mode
+                                    tern
+                                    company-tern
+                                    gh-md
+                                    window-purpose
+                                    ivy-purpose
+                                    helm-purpose
+                                    spacemacs-purpose-popwin
                                     skewer-mode
                                     rainbow-delimiters
                                     org-repo-todo
                                     smooth-scrolling
+                                    fancy-battery
+                                    golden-ratio
+                                    password-generator
                                     org-timer
+                                    org-brain
                                     org-plus-contrib
+                                    org-download
                                     org-tree-slide
                                     org-projectile
-                                    git-gutter
-                                    git-gutter-fringe)
+                                    git-gutter+
+                                    tide
+                                    git-gutter-fringe+)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -293,7 +311,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(doom-nord-light
+                         doom-nord
+                         spacemacs-dark
                          spacemacs-light
                          leuven)
 
@@ -592,14 +612,29 @@ you should place your code here."
   (setq user-full-name "张荣")
   (setq default-directory "~/")
 
+  (setq python-indent-offset 4)
+
   (setq shell-file-name "/bin/sh")
 
-  (setq deft-directory "~/Developer/munger/wiki/notes/"
-        org-journal-dir "~/Developer/munger/vitae/journal/"
-        org-journal-file-format "%Y-%m-%d"
-        org-reveal-root "http://localhost:8000/"
-        geiser-default-implementation "mit"
-        )
+  (setq calendar-location-name "江苏-南京-鼓楼"
+        calendar-latitude 118.18
+        calendar-longitude 34.28)
+
+  (setq deft-directory "~/Developer/earth/ocean/caterpillar/9.个人科学/99-待整理/临时记录/"
+        org-journal-dir "~/Developer/earth/ocean/caterpillar/GTD/journal/"
+        org-journal-file-format "%Y-%m-%d.org"
+        org-journal-date-prefix "#+TITLE: "
+        org-journal-date-format "%a, %d %b %Y, %j"
+        org-journal-enable-agenda-integration t
+        org-reveal-root "http://localhost/styles/reveal"
+        geiser-default-implementation "mit")
+
+  (setq lsp-ui-doc-enable 'nil
+        lsp-java-save-action-organize-imports nil)
+  (setq org-html-inline-image-rules
+        '(("file" . "\\.\\(jpeg\\|jpg\\|png\\|gif\\|svg\\|webp\\)\\'")
+          ("http" . "\\.\\(jpeg\\|jpg\\|png\\|gif\\|svg\\|webp\\)\\'")
+          ("https" . "\\.\\(jpeg\\|jpg\\|png\\|gif\\|svg\\|webp\\)\\'")))
 
   (add-to-list 'yas-snippet-dirs "~/.spacemacs.d/snippets")
 
@@ -639,6 +674,7 @@ you should place your code here."
                'anaconda-mode-show-unreadable-response)
 
   (spacemacs/toggle-highlight-current-line-globally-off)
+  (setq dotspacemacs-enable-lazy-installation nil)
 
   (defconst my-protobuf-style
     '((c-basic-offset . 4)

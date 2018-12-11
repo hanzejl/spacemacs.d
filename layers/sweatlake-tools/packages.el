@@ -30,7 +30,6 @@
 ;;; Code:
 
 (defconst sweatlake-tools-packages
-  '()
-)
+  '())
 
 ;;; packages.el ends here

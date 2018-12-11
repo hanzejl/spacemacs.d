@@ -1,0 +1,6 @@
+#name : bl
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# --
+#+BEGIN_LEFT
+$0
+#+END_LEFT

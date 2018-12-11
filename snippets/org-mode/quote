@@ -1,4 +1,4 @@
 #name : quote-author
 #contributor : Rick Moynihan <rick@sourcesmouth.co.uk>
 # --
-@@html:<div align="right"><i>$1</i></div>@@
+@@html:<div align="right"><i>—— $1</i></div>@@

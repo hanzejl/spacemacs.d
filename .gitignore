@@ -1,3 +1,5 @@
 custom.el
 
 .spacemacs.env
+
+.DS_Store

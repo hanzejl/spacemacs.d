@@ -10,11 +10,6 @@
 ;;; License: GPLv3
 
 
-(defun sweatlake/hexo-relume-me ()
-  (interactive)
-  (hexo "~/Developer/munger/blog"))
-
-
 (defun sweatlake/terminal-notify-osx (title message)
 	(call-process "terminal-notifier"
                 nil 0 nil

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: hugo
+# key: hugo
+# --
+#+HUGO_BASE_DIR: ~/Developer/earth/plateau/mountain/
+#+HUGO_AUTO_SET_LASTMOD: t
+#+OPTIONS: author:nil toc:nil
+#+TAGS: $1
+
+$0

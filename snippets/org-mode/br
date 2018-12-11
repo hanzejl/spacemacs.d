@@ -1,0 +1,6 @@
+#name : br
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# --
+#+BEGIN_RIGHT
+$0
+#+END_RIGHT

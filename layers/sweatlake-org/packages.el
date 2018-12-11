@@ -32,46 +32,49 @@
 (defconst sweatlake-org-packages
   '((org :location built-in)
     org-pomodoro
-    hexo
+    ox-hugo
     ))
 
 
-(defun sweatlake-org/init-hexo ()
-  (use-package hexo
-    :config (progn
-              (setq hexo-new-format 'org))
-    ))
+(defun sweatlake-org/post-init-ox-hugo ()
+  (use-package ox-hugo
+    :config
+    (progn
+      (setq org-hugo-default-section-directory "post")
+      ))
+  )
 
 
 (defun sweatlake-org/post-init-org-pomodoro ()
   (use-package org-pomodoro
-    :config              (progn
-               (spacemacs/set-leader-keys-for-major-mode 'org-mode
-                 "p" 'org-pomodoro)
-               (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
-                 "p" 'org-pomodoro)
-               (setq
-                org-pomodoro-format "§·%s"
-                org-pomodoro-short-break-format "♨·%s"
-                org-pomodoro-long-break-format "❆·%s")
+    :config
+    (progn
+      (spacemacs/set-leader-keys-for-major-mode 'org-mode
+        "p" 'org-pomodoro)
+      (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
+        "p" 'org-pomodoro)
+      (setq
+       org-pomodoro-format "§·%s"
+       org-pomodoro-short-break-format "♨·%s"
+       org-pomodoro-long-break-format "❆·%s")
 
-               (add-hook 'org-pomodoro-finished-hook
-                         (lambda ()
-                           (sweatlake/terminal-notify-osx "Pomodoro Finished"
-                                                          "Have a break!")))
-               (add-hook 'org-pomodoro-short-break-finished-hook
-                         (lambda ()
-                           (sweatlake/terminal-notify-osx "Short Break"
-                                                          "Ready to Go?")))
-               (add-hook 'org-pomodoro-long-break-finished-hook
-                         (lambda ()
-                           (sweatlake/terminal-notify-osx "Long Break"
-                                                          "Ready to Go?")))
-               (add-hook 'org-pomodoro-killed-hook
-                         (lambda () (sweatlake/terminal-notify-osx
-                                     "Pomodoro Killed"
-                                     "One does not simply kill a pomodoro!")))))
-    )
+      (add-hook 'org-pomodoro-finished-hook
+                (lambda ()
+                  (sweatlake/terminal-notify-osx "Pomodoro Finished"
+                                                 "Have a break!")))
+      (add-hook 'org-pomodoro-short-break-finished-hook
+                (lambda ()
+                  (sweatlake/terminal-notify-osx "Short Break"
+                                                 "Ready to Go?")))
+      (add-hook 'org-pomodoro-long-break-finished-hook
+                (lambda ()
+                  (sweatlake/terminal-notify-osx "Long Break"
+                                                 "Ready to Go?")))
+      (add-hook 'org-pomodoro-killed-hook
+                (lambda () (sweatlake/terminal-notify-osx
+                            "Pomodoro Killed"
+                            "One does not simply kill a pomodoro!")))))
+  )
 
 (defun sweatlake-org/post-init-org()
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
@@ -89,11 +92,13 @@
        org-log-into-drawer t
 
        org-export-with-priority t
+       org-use-tag-inheritance nil
 
-       org-agenda-files '("~/Developer/munger/vitae/gtd/")
+       org-agenda-files '("~/Developer/earth/ocean/caterpillar/GTD")
        ;; variables about the org-capture directory
-       org-capture-directory "~/Developer/munger/vitae/capture/"
-       org-default-notes-files (concat org-capture-directory "/todo.org")
+
+       org-capture-directory "~/Developer/earth/ocean/caterpillar/GTD/capture/"
+       org-default-capture-file (concat org-capture-directory "inspiration.org")
        org-html-htmlize-output-type 'css
        )
 
@@ -128,16 +133,6 @@
                ("CLOSED" :foreground "forest green" :weight bold)
                ("MEETING" :foreground "forest green" :weight bold)
                ))
-
-       org-todo-state-tags-triggers
-       (quote (("CANCELLED" ("CANCELLED" . t))
-               ("WAITING" ("WAITING" . t))
-               ("CLOSED" ("CLOSED" . t))
-               ("HOLD" ("WAITING") ("HOLD" . t))
-               ("DONE" ("WAITING") ("HOLD"))
-               ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
-               ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
-               ("DONE" ("WAITING") ("CANCELLED") ("HOLD"))))
        )
 
       ;; variables about the org-priority
@@ -156,36 +151,32 @@
                                   (?D . (:foreground "#9900FF"))
                                   )))
 
+      (setq org-clocktable-defaults
+            '(:tcolumns 1 :properties("PRIORITY" "TAGS" "Effort") :formula % :sort (6 . ?N))
+
+            org-clock-clocktable-default-properties
+            '(:scope subtree :maxlevel 4)
+            )
+
       (setq-default
+
        ;; capture templates
        org-capture-templates
-       (quote (("t" "Todo" entry (file+headline (concat org-capture-directory "/todo.org") "Plans")
-                "* TODO %?\n%U\n" :clock-in t :clock-resume t)
-               ("m" "Meeting" entry (file+headline (concat org-capture-directory "/todo.org") "Meetings")
-                "* MEETING with %? :MEETING:\n%U\n" :clock-in t :clock-resume t)
-               ("p" "Phone call" entry (file+headline (concat org-capture-directory "/todo.org") "Phone Call")
-                "* PHONE %? :PHONE:\n%U\n" :clock-in t :clock-resume t)
+       (quote (("b" "Books" item (file+headline org-default-capture-file "书籍")
+                "- [ ] %U 想看书 *《%?》*")
+               ("f" "Films" checkitem (file+headline org-default-capture-file "电影")
+                "- [ ] %U 想看电影 *《%?》*")
+               ("e" "Eats" checkitem (file+headline org-default-capture-file "美食")
+                "- [ ] %U 想吃 *%?*")
+               ("g" "Game" checkitem (file+headline org-default-capture-file "游戏")
+                "- [ ] %U 想玩 *%?*")
+               ("j" "Jounery" item (file+headline org-default-capture-file "旅行")
+                "- [ ] %U 想去 *%?* 地方看看")
+               ("o" "Others" item (file+headline org-default-capture-file "其他")
+                "- [ ] %U 想到了件事情：%?")
+               ))
+       )
 
-               ("b" "Books" item (file+headline (concat org-capture-directory "/todo.org") "Books")
-                "- 需要阅读《%?》    %U\n")
-               ("f" "Films" item (file+headline (concat org-capture-directory "/todo.org") "Films")
-                "- 优秀电影、纪录片《%?》    %U\n")
-               ("j" "Jounery" entry (file+headline (concat org-capture-directory "/todo.org") "Jounery")
-                "** 计划去<%?>地方旅行\nSCHEDULED: %u\n")
-               ("e" "Entertainment" entry (file+headline (concat org-capture-directory "/todo.org") "Entertainment")
-                "** <%?>: %u")
-
-               ;; note file
-               ("n" "Note" entry (file (concat org-capture-directory "/note.org"))
-                "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
-
-               ;; diary file
-               ("d" "Diary" entry (file+datetree (concat org-capture-directory "/diary.org"))
-                "* %?\n%U\n" :clock-in t :clock-resume t)
-               )))
-
-      (setq org-plantuml-jar-path
-            (expand-file-name "~/.spacemacs.d/plantuml.jar"))
       (setq org-ditaa-jar-path "~/.spacemacs.d/ditaa.jar")
       (setq-default org-babel-results-keyword "results")
 
@@ -201,7 +192,7 @@
          (plantuml . t)
          (C . t)
          (ditaa . t)))
-      
+
       (setq org-confirm-babel-evaluate nil)
       (add-to-list 'org-src-lang-modes (quote ("dot" . graphviz-dot)))
 

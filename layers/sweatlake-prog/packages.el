@@ -64,6 +64,8 @@
        js2-strict-trailing-comma-warning nil
        js2-strict-missing-semi-warning nil)
 
+      (add-hook 'rjsx-mode-hook 'tern-mode)
+
       (advice-add #'js-jsx-indent-line
                   :after
                   #'sweatlake-prog/js-jsx-indent-line-align-closing-bracket)
@@ -71,7 +73,7 @@
     :config
     (modify-syntax-entry ?_ "w" js2-mode-syntax-table)))
 
-(defun sweatlake-prog/init-add-node-modules-path ()
+(defun sweatlake-prog/post-init-add-node-modules-path ()
   (use-package add-node-modules-path
     :defer t
     :init
@@ -80,7 +82,8 @@
       (add-hook 'web-mode-hook #'add-node-modules-path)
       (add-hook 'typescript-mode-hook #'add-node-modules-path)
       (with-eval-after-load 'rjsx-mode
-        (add-hook 'rjsx-mode-hook #'add-node-modules-path)))))
+        (add-hook 'rjsx-mode-hook #'add-node-modules-path)))
+    ))
 
 (defun sweatlake-prog/post-init-company-flow ()
   (spacemacs|add-company-backends
@@ -96,16 +99,18 @@
   (spacemacs/enable-flycheck 'rjsx-mode))
 
 
-(defun sweatlake-prog/init-prettier-js ()
+(defun sweatlake-prog/post-init-prettier-js ()
   (use-package prettier-js
     :defer t
     :init
     (progn
-      (with-eval-after-load 'web-mode
-        (add-hook 'js2-mode-hook 'prettier-js-mode)
-        (add-hook 'typescript-mode-hook 'prettier-js-mode)
-        (add-hook 'json-mode-hook 'prettier-js-mode)
-        (add-hook 'web-mode-hook 'prettier-js-mode)
+      (with-eval-after-load 'js2-mode
+        (add-hook 'js2-mode-hook 'prettier-js-mode))
+      (with-eval-after-load 'typescript-mode
+        (add-hook 'typescript-mode-hook 'prettier-js-mode))
+      (with-eval-after-load 'json-mode
+        (add-hook 'json-mode-hook 'prettier-js-mode))
+      (with-eval-after-load 'rjsx-mode
         (add-hook 'rjsx-mode-hook 'prettier-js-mode)
         )
       )
