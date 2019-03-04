@@ -1,0 +1,6 @@
+#name : bq
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# --
+#+BEGIN_QUOTE
+$0
+#+END_QUOTE

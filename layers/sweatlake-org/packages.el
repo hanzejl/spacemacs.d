@@ -94,10 +94,10 @@
        org-export-with-priority t
        org-use-tag-inheritance nil
 
-       org-agenda-files '("~/Developer/earth/ocean/caterpillar/GTD")
+       org-agenda-files '("~/Developer/earth/ocean/caterpillar/9.螭吻/88-GTD")
        ;; variables about the org-capture directory
 
-       org-capture-directory "~/Developer/earth/ocean/caterpillar/GTD/capture/"
+       org-capture-directory "~/Developer/earth/ocean/caterpillar/9.螭吻/88-GTD/capture/"
        org-default-capture-file (concat org-capture-directory "inspiration.org")
        org-html-htmlize-output-type 'css
        )

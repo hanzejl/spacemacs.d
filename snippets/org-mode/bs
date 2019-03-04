@@ -1,0 +1,6 @@
+#name : bs
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# --
+#+BEGIN_SRC ${1}
+$0
+#+END_SRC

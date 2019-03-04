@@ -1,0 +1,6 @@
+#name : bc
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# --
+#+BEGIN_CENTER
+$0
+#+END_CENTER
