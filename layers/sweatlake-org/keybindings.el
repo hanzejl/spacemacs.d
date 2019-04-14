@@ -13,3 +13,6 @@
 
 (spacemacs/set-leader-keys-for-major-mode 'org-mode
   "ic" 'sweatlake/org-insert-src-block)
+
+(spacemacs/set-leader-keys-for-major-mode 'org-mode
+  "ii" 'sweatlake/org-custom-id-get-create)
