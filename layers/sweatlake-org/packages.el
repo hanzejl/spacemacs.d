@@ -120,19 +120,19 @@
       (setq-default
        org-todo-keywords
        (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
-               (sequence "WAITING(w@/!)" "HOLD(h@/!)"
-                         "PROJECT(p@)" "|" "CANCELLED(c@/!)" "|" "CLOSED(s@/!)"
-                         "METTING")))
+               (sequence "WAIT(w@/!)" "HOLD(h@/!)"
+                         "PROJ(p@)" "|" "CLSE(c@/!)" "PART(p!/!)"
+                         "MEET")))
 
        org-todo-keyword-faces
        (quote (("TODO" :foreground "red" :weight bold)
                ("NEXT" :foreground "blue" :weight bold)
                ("DONE" :foreground "forest green" :weight bold)
-               ("WAITING" :foreground "orange" :weight bold)
+               ("WAIT" :foreground "orange" :weight bold)
                ("HOLD" :foreground "magenta" :weight bold)
-               ("CANCELLED" :foreground "forest green" :weight bold)
-               ("CLOSED" :foreground "forest green" :weight bold)
-               ("MEETING" :foreground "forest green" :weight bold)
+               ("CLSE" :foreground "forest green" :weight bold)
+               ("PART" :foreground "forest green" :weight bold)
+               ("MEET" :foreground "forest green" :weight bold)
                ))
        )
 
@@ -153,7 +153,8 @@
                                   )))
 
       (setq org-clocktable-defaults
-            '(:tcolumns 1 :properties("PRIORITY" "TAGS" "Effort") :formula % :sort (6 . ?N))
+            '(:tcolumns 1 :properties("PRIORITY" "TAGS" "Effort")
+                        :formula % :sort (6 . ?N))
 
             org-clock-clocktable-default-properties
             '(:scope subtree :maxlevel 4)
