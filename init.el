@@ -39,8 +39,9 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ivy
-     auto-completion
+     ;; ivy
+     helm
+     helmauto-completion
      better-defaults
      (chinese :packages youdao-dictionary fcitx
               :variables chinese-enable-fcitx nil
@@ -154,7 +155,6 @@ values."
                                     magit-svn
                                     git-timemachine
                                     git-messenger
-                                    helm-gitignore
                                     pip-requirements
                                     smeargle
                                     eyebrowse
