@@ -119,14 +119,14 @@
       ;; variables about the TODO Keywords
       (setq-default
        org-todo-keywords
-       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
+       (quote ((sequence "TODO(t)" "DING(i)" "|" "DONE(d!/!)")
                (sequence "WAIT(w@/!)" "HOLD(h@/!)"
                          "PROJ(p@)" "|" "CLSE(c@/!)" "PART(p!/!)"
                          "MEET")))
 
        org-todo-keyword-faces
        (quote (("TODO" :foreground "red" :weight bold)
-               ("NEXT" :foreground "blue" :weight bold)
+               ("DING" :foreground "blue" :weight bold)
                ("DONE" :foreground "forest green" :weight bold)
                ("WAIT" :foreground "orange" :weight bold)
                ("HOLD" :foreground "magenta" :weight bold)
@@ -135,6 +135,19 @@
                ("MEET" :foreground "forest green" :weight bold)
                ))
        )
+
+      (setq cdlatex-command-alist '
+            (
+             ("sum"       "Insert \\sum_{}^{}"
+              "\\sum_{?}^{}"  cdlatex-position-cursor nil nil t)
+             ("int"       "Insert \\int_{}^{}"
+              "\\int_{?}^{}"  cdlatex-position-cursor nil nil t)
+             ))
+
+      (setq cdlatex-math-symbol-alist
+            '(
+              ( ?0  ("\\varnothing"       ))
+              ))
 
       ;; variables about the org-priority
       ;; see the "Put First Things First"

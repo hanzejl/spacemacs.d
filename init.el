@@ -141,7 +141,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(cdlatex auctex)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -564,10 +564,11 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+
   (setq configuration-layer-elpa-archives
-        '(("melpa-cn" . "https://elpa.emacs-china.org/melpa/")
-          ("org-cn"   . "https://elpa.emacs-china.org/org/")
-          ("gnu-cn"   . "https://elpa.emacs-china.org/gnu/")))
+    '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+      ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+      ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
   (setq exec-path-from-shell-check-startup-files nil)
 
@@ -631,6 +632,7 @@ you should place your code here."
   (add-hook 'prog-mode-hook 'turn-on-fci-mode)
   (add-hook 'text-mode-hook 'turn-on-fci-mode)
   (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
+  (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
 
   (add-hook 'sql-mode-hook 'sqlind-minor-mode)
   (add-hook 'web-mode-hook 'rainbow-mode)
