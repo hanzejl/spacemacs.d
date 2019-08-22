@@ -41,7 +41,8 @@ values."
      ;; ----------------------------------------------------------------
      ;; ivy
      helm
-     helmauto-completion
+     helm
+     auto-completion
      better-defaults
      (chinese :packages youdao-dictionary fcitx
               :variables chinese-enable-fcitx nil
