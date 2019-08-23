@@ -633,7 +633,10 @@ you should place your code here."
   (add-hook 'prog-mode-hook 'turn-on-fci-mode)
   (add-hook 'text-mode-hook 'turn-on-fci-mode)
   (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
+
   (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+  (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)   ; with AUCTeX LaTeX mode
+  (add-hook 'latex-mode-hook 'turn-on-cdlatex)   ; with Emacs latex mode
 
   (add-hook 'sql-mode-hook 'sqlind-minor-mode)
   (add-hook 'web-mode-hook 'rainbow-mode)

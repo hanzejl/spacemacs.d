@@ -149,6 +149,8 @@
               ( ?0  ("\\varnothing"       ))
               ))
 
+      (setq LaTeX-math-abbrev-prefix [f7])
+
       ;; variables about the org-priority
       ;; see the "Put First Things First"
       ;; -- A is for Urgent and Important
