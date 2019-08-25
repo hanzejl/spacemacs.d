@@ -138,15 +138,143 @@
 
       (setq cdlatex-command-alist '
             (
+             ("equ"       "Insert an EQUATION environment template"
+              "" cdlatex-environment ("equation*") t nil)
+             ("equ*"       "Insert an EQUATION environment template"
+              "" cdlatex-environment ("equation") t nil)
+             ("ali"       "Insert an EQUATION environment template"
+              "" cdlatex-environment ("align*") t nil)
+             ("ali*"       "Insert an EQUATION environment template"
+              "" cdlatex-environment ("align") t nil)
+
+             ("lrf"       "Insert \\lfloor \\rfloor"
+              "\\lfloor ? \\rfloor"  cdlatex-position-cursor nil nil t)
+             ("lrc"       "Insert \\lceil \\rceil"
+              "\\lceil ? \\rceil"  cdlatex-position-cursor nil nil t)
+
              ("sum"       "Insert \\sum_{}^{}"
               "\\sum_{?}^{}"  cdlatex-position-cursor nil nil t)
              ("int"       "Insert \\int_{}^{}"
               "\\int_{?}^{}"  cdlatex-position-cursor nil nil t)
+
+             ("bin"       "Insert \\binom{}{}"
+              "\\binom{?}{}"  cdlatex-position-cursor nil nil t)
+
+             ("bcap"      "Insert \\bigcap_{?}^{}"
+              "\\bigcap_{?}^{}"  cdlatex-position-cursor nil nil t)
+             ("bcup"      "Insert \\bigcup_{?}^{}"
+              "\\bigcup_{?}^{}"  cdlatex-position-cursor nil nil t)
+
+             ("lim"       "Insert \\lim_{}"
+              "\\lim_{?}"  cdlatex-position-cursor nil nil t)
+             ("lims"       "Insert \\limsup_{}"
+              "\\limsup_{?}"  cdlatex-position-cursor nil nil t)
+             ("limi"       "Insert \\liminf_{}"
+              "\\liminf_{?}"  cdlatex-position-cursor nil nil t)
+             ))
+
+      (setq cdlatex-math-modify-alist
+            '(
+              ( ?v    "\\vec"                nil        t   t   nil )
+              ( ?l    "\\mathbb"             "\\textsl" t   nil nil )
+              ( ?s    "\\mathscr"            nil        t   nil nil )
+              ( ?f    "\\mathfrak"           nil        t   nil nil )
              ))
 
       (setq cdlatex-math-symbol-alist
             '(
-              ( ?0  ("\\varnothing"       ))
+              ( ?a  ("\\alpha"          "\\aleph"))
+              ( ?A  ("\\forall"         ))
+              ( ?b  ("\\beta"           "\\beth"))
+              ( ?B  (""                 ))
+              ( ?c  (""                 ""                "\\cos"))
+              ( ?C  (""                 ""                "\\arccos"))
+              ( ?d  ("\\delta"          "\\partial"))
+              ( ?D  ("\\Delta"          "\\nabla"))
+              ( ?e  ("\\varepsilon"     "\\epsilon"      "\\exp"))
+              ( ?E  ("\\exists"         ""                "\\ln"))
+              ( ?f  ("\\phi"            "\\varphi"))
+              ( ?F  (""                 ))
+              ( ?g  ("\\gamma"          "\digamma"        "\\lg"))
+              ( ?G  ("\\Gamma"          ""                "10^{?}"))
+              ( ?h  ("\\eta"            "\\hbar"))
+              ( ?H  (""                 ))
+              ( ?i  ("\\implies"        "\\imath"))
+              ( ?I  (""                 "\\Im"))
+              ( ?j  (""                 "\\jmath"))
+              ( ?J  (""                 ))
+              ( ?k  ("\\kappa"          ))
+              ( ?K  (""                 ))
+              ( ?l  ("\\lambda"         "\\ell"           "\\log"))
+              ( ?L  ("\\Lambda"         ))
+              ( ?m  ("\\mu"             ))
+              ( ?M  (""                 ))
+              ( ?n  ("\\nu"             ""                "\\ln"))
+              ( ?N  (""                 ))
+              ( ?o  ("\\omega"          ))
+              ( ?O  ("\\Omega"          "\\mho"))
+              ( ?p  ("\\pi"             "\\varpi"))
+              ( ?P  ("\\Pi"             ))
+              ( ?q  ("\\theta"          "\\vartheta"))
+              ( ?Q  ("\\Theta"          ))
+              ( ?r  ("\\rho"            "\\varrho"))
+              ( ?R  (""                 "\\Re"))
+              ( ?s  ("\\sigma"          "\\varsigma"      "\\sin"))
+              ( ?S  ("\\Sigma"          ""                "\\arcsin"))
+              ( ?t  ("\\tau"            ""                "\\tan"))
+              ( ?T  (""                 ""                "\\arctan"))
+              ( ?u  ("\\upsilon"        ))
+              ( ?U  ("\\Upsilon"        ))
+              ( ?v  ("\\vee"            ))
+              ( ?V  ("\\Phi"            ))
+              ( ?w  ("\\xi"             ))
+              ( ?W  ("\\Xi"             ))
+              ( ?x  ("\\chi"            ))
+              ( ?X  (""                 ))
+              ( ?y  ("\\psi"            ))
+              ( ?Y  ("\\Psi"            ))
+              ( ?z  ("\\zeta"           ))
+              ( ?Z  (""                 ))
+              ( ?   (""                 ))
+              ( ?0  ("\\varnothing"     ))
+              ( ?1  (""                 ))
+              ( ?2  (""                 ))
+              ( ?3  (""                 ))
+              ( ?4  (""                 ))
+              ( ?5  (""                 ))
+              ( ?6  (""                 ))
+              ( ?7  (""                 ))
+              ( ?8  ("\\infty"          ))
+              ( ?9  (""                 ))
+              ( ?!  ("\\neg"            ))
+              ( ?@  (""                 ))
+              ( ?#  (""                 ))
+              ( ?$  (""                 ))
+              ( ?%  (""                 ))
+              ( ?^  ("\\uparrow"        ))
+              ( ?&  ("\\wedge"          ))
+              ( ?\? (""                 ))
+              ( ?~  ("\\approx"         "\\simeq"))
+              ( ?_  ("\\downarrow"      ))
+              ( ?+  ("\\oplus"          ))
+              ( ?-  ("\\ominus"         "\\gets"              "\\mapsto"))
+              ( ?*  ("\\times"          "\\otimes"))
+              ( ?/  ("\\not"            ))
+              ( ?|  (""                 ))
+              ( ?\; ("\\cap"            "\\cup"))
+              ( ?\\ ("\\setminus"       ))
+              ( ?\" (""                 ))
+              ( ?=  ("\\equiv"          "\\implies"           "\\iff"))
+              ( ?\( ("\\langle"         ))
+              ( ?\) ("\\rangle"         ))
+              ( ?\[ ("\\subset"         "\\subseteq"))
+              ( ?\] ("\\supset"         "\\supseteq"))
+              ( ?{  ("\\not\\subset"    "\\nsubseteq"))
+              ( ?}  ("\\not\\supset"    "\\nsupseteq"))
+              ( ?<  ("\\leqslant"       "\\prec"              "\\preceq"))
+              ( ?>  ("\\geqslant"       "\\succ"              "\\succeq"))
+              ( ?'  ("\\prime"          ))
+              ( ?.  ("\\cdot"           "\\cdots"             "\\odot"))
               ))
 
       (setq LaTeX-math-abbrev-prefix [f7])
