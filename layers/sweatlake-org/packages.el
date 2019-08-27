@@ -152,6 +152,15 @@
              ("lrc"       "Insert \\lceil \\rceil"
               "\\lceil ? \\rceil"  cdlatex-position-cursor nil nil t)
 
+             ("a1n"       "Insert a_1, a_2, \\cdots, a_{}"
+              "a_1, a_2, \\cdots, a_{?}"  cdlatex-position-cursor nil nil t)
+             ("b1n"       "Insert b_1, b_2, \\cdots, b_{}"
+              "b_1, b_2, \\cdots, b_{?}"  cdlatex-position-cursor nil nil t)
+             ("d1n"       "Insert d_1, d_2, \\cdots, d_{}"
+              "d_1, d_2, \\cdots, d_{?}"  cdlatex-position-cursor nil nil t)
+             ("v1n"       "Insert v_1, v_2, \\cdots, v_{}"
+              "v_1, v_2, \\cdots, v_{?}"  cdlatex-position-cursor nil nil t)
+
              ("sum"       "Insert \\sum_{}^{}"
               "\\sum_{?}^{}"  cdlatex-position-cursor nil nil t)
              ("int"       "Insert \\int_{}^{}"
@@ -191,7 +200,7 @@
               ( ?C  (""                 ""                "\\arccos"))
               ( ?d  ("\\delta"          "\\partial"))
               ( ?D  ("\\Delta"          "\\nabla"))
-              ( ?e  ("\\varepsilon"     "\\epsilon"      "\\exp"))
+              ( ?e  ("\\epsilon"        "\\varepsilon"    "\\exp"))
               ( ?E  ("\\exists"         ""                "\\ln"))
               ( ?f  ("\\phi"            "\\varphi"))
               ( ?F  (""                 ))
@@ -199,11 +208,11 @@
               ( ?G  ("\\Gamma"          ""                "10^{?}"))
               ( ?h  ("\\eta"            "\\hbar"))
               ( ?H  (""                 ))
-              ( ?i  ("\\implies"        "\\imath"))
+              ( ?i  ("\\iota"           "\\implies"       "\\imath"))
               ( ?I  (""                 "\\Im"))
               ( ?j  (""                 "\\jmath"))
               ( ?J  (""                 ))
-              ( ?k  ("\\kappa"          ))
+              ( ?k  ("\\kappa"          "\\varkappa"))
               ( ?K  (""                 ))
               ( ?l  ("\\lambda"         "\\ell"           "\\log"))
               ( ?L  ("\\Lambda"         ))
