@@ -156,13 +156,21 @@
               "a_1, a_2, \\cdots, a_{?}"  cdlatex-position-cursor nil nil t)
              ("b1n"       "Insert b_1, b_2, \\cdots, b_{}"
               "b_1, b_2, \\cdots, b_{?}"  cdlatex-position-cursor nil nil t)
+
              ("d1n"       "Insert d_1, d_2, \\cdots, d_{}"
               "d_1, d_2, \\cdots, d_{?}"  cdlatex-position-cursor nil nil t)
              ("v1n"       "Insert v_1, v_2, \\cdots, v_{}"
               "v_1, v_2, \\cdots, v_{?}"  cdlatex-position-cursor nil nil t)
 
+             ("x1n"       "Insert x_1, x_2, \\cdots, x_{}"
+              "x_1, x_2, \\cdots, x_{?}"  cdlatex-position-cursor nil nil t)
+             ("y1n"       "Insert y_1, y_2, \\cdots, y_{}"
+              "y_1, y_2, \\cdots, y_{?}"  cdlatex-position-cursor nil nil t)
+
              ("sum"       "Insert \\sum_{}^{}"
               "\\sum_{?}^{}"  cdlatex-position-cursor nil nil t)
+             ("prod"       "Insert \\prod_{}^{}"
+              "\\prod_{?}^{}"  cdlatex-position-cursor nil nil t)
              ("int"       "Insert \\int_{}^{}"
               "\\int_{?}^{}"  cdlatex-position-cursor nil nil t)
 
@@ -269,7 +277,7 @@
               ( ?-  ("\\ominus"         "\\gets"              "\\mapsto"))
               ( ?*  ("\\times"          "\\otimes"))
               ( ?/  ("\\not"            ))
-              ( ?|  (""                 ))
+              ( ?|  ("\\mid"            "\\nmid"))
               ( ?\; ("\\cap"            "\\cup"))
               ( ?\\ ("\\setminus"       ))
               ( ?\" (""                 ))
@@ -282,7 +290,7 @@
               ( ?}  ("\\not\\supset"    "\\nsupseteq"))
               ( ?<  ("\\leqslant"       "\\prec"              "\\preceq"))
               ( ?>  ("\\geqslant"       "\\succ"              "\\succeq"))
-              ( ?'  ("\\prime"          ))
+              ( ?'  ("\\prime"          "\\circ"))
               ( ?.  ("\\cdot"           "\\cdots"             "\\odot"))
               ))
 
