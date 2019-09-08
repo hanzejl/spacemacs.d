@@ -151,6 +151,8 @@
               "\\lfloor ? \\rfloor"  cdlatex-position-cursor nil nil t)
              ("lrc"       "Insert \\lceil \\rceil"
               "\\lceil ? \\rceil"  cdlatex-position-cursor nil nil t)
+             ("lrv"       "Insert \\lVert \\rVert"
+              "\\lVert ? \\rVert"  cdlatex-position-cursor nil nil t)
 
              ("a1n"       "Insert a_1, a_2, \\cdots, a_{}"
               "a_1, a_2, \\cdots, a_{?}"  cdlatex-position-cursor nil nil t)
@@ -192,6 +194,11 @@
 
       (setq cdlatex-math-modify-alist
             '(
+              ( ?o    "\\overline"           nil        t   t   nil )
+              ( ?u    "\\underline"          nil        t   t   nil )
+              ( ?t    "\\tilde"              nil        t   t   nil )
+              ( ?h    "\\hat"                nil        t   t   nil )
+
               ( ?v    "\\vec"                nil        t   t   nil )
               ( ?l    "\\mathbb"             "\\textsl" t   nil nil )
               ( ?s    "\\mathscr"            nil        t   nil nil )
@@ -204,9 +211,9 @@
               ( ?A  ("\\forall"         ))
               ( ?b  ("\\beta"           "\\beth"))
               ( ?B  (""                 ))
-              ( ?c  (""                 ""                "\\cos"))
+              ( ?c  ("\\partial"        ""                "\\cos"))
               ( ?C  (""                 ""                "\\arccos"))
-              ( ?d  ("\\delta"          "\\partial"))
+              ( ?d  ("\\delta"          "\\mathrm{d}"))
               ( ?D  ("\\Delta"          "\\nabla"))
               ( ?e  ("\\epsilon"        "\\varepsilon"    "\\exp"))
               ( ?E  ("\\exists"         ""                "\\ln"))
