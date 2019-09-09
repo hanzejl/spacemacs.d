@@ -161,6 +161,8 @@
 
              ("d1n"       "Insert d_1, d_2, \\cdots, d_{}"
               "d_1, d_2, \\cdots, d_{?}"  cdlatex-position-cursor nil nil t)
+             ("e1n"       "Insert e_1, e_2, \\cdots, e_{}"
+              "e_1, e_2, \\cdots, e_{?}"  cdlatex-position-cursor nil nil t)
              ("v1n"       "Insert v_1, v_2, \\cdots, v_{}"
               "v_1, v_2, \\cdots, v_{?}"  cdlatex-position-cursor nil nil t)
 
