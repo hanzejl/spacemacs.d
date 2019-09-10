@@ -171,6 +171,12 @@
              ("y1n"       "Insert y_1, y_2, \\cdots, y_{}"
               "y_1, y_2, \\cdots, y_{?}"  cdlatex-position-cursor nil nil t)
 
+             ("vec"       "Insert \\overrightarrow{}"
+              "\\overrightarrow{?}"  cdlatex-position-cursor nil nil t)
+
+             ("bs"       "Insert \\boldsymbol{}"
+              "\\boldsymbol{?}"  cdlatex-position-cursor nil nil t)
+
              ("sum"       "Insert \\sum_{}^{}"
               "\\sum_{?}^{}"  cdlatex-position-cursor nil nil t)
              ("prod"       "Insert \\prod_{}^{}"
@@ -210,9 +216,9 @@
       (setq cdlatex-math-symbol-alist
             '(
               ( ?a  ("\\alpha"          "\\aleph"))
-              ( ?A  ("\\forall"         ))
+              ( ?A  ("\\forall"         "\\boldsymbol{\\alpha}"))
               ( ?b  ("\\beta"           "\\beth"))
-              ( ?B  (""                 ))
+              ( ?B  (""                 "\\boldsymbol{\\beta}"))
               ( ?c  ("\\partial"        ""                "\\cos"))
               ( ?C  (""                 ""                "\\arccos"))
               ( ?d  ("\\delta"          "\\mathrm{d}"))
@@ -222,7 +228,7 @@
               ( ?f  ("\\phi"            "\\varphi"))
               ( ?F  (""                 ))
               ( ?g  ("\\gamma"          "\digamma"        "\\lg"))
-              ( ?G  ("\\Gamma"          ""                "10^{?}"))
+              ( ?G  ("\\Gamma"          "\\boldsymbol{\\gamma}"))
               ( ?h  ("\\eta"            "\\hbar"))
               ( ?H  (""                 ))
               ( ?i  ("\\iota"           "\\implies"       "\\imath"))
