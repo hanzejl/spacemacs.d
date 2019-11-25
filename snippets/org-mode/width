@@ -1,4 +1,4 @@
-#name : html attr
+#name : html width
 #contributor : zhangrong <hanzejl@gmail.com>
 # --
-#+ATTR_HTML: :title $1
+#+ATTR_HTML: :width 250
