@@ -94,11 +94,11 @@
        org-export-with-priority t
        org-use-tag-inheritance nil
 
-       org-agenda-files '("~/Developer/earth/ocean/caterpillar/9-Pluto/88-org/agenda")
+       org-agenda-files '("~/Developer/earth/ocean/caterpillar/9-螭吻/88-org/agenda")
        ;; variables about the org-capture directory
        org-bullets-bullet-list '("♠" "♥" "♣" "♦")
 
-       org-capture-directory "~/Developer/earth/ocean/caterpillar/9-Pluto/88-org/capture/"
+       org-capture-directory "~/Developer/earth/ocean/caterpillar/9-螭吻/88-org/capture/"
        org-default-capture-file (concat org-capture-directory "inspiration.org")
        org-html-htmlize-output-type 'css
        )

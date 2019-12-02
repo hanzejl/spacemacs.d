@@ -609,8 +609,8 @@ you should place your code here."
         calendar-latitude 118.18
         calendar-longitude 34.28)
 
-  (setq deft-directory "~/Developer/earth/ocean/caterpillar/9-Pluto/99-待整理/临时记录/"
-        org-journal-dir "~/Developer/earth/ocean/caterpillar/9-Pluto/88-org/journal/raw/"
+  (setq deft-directory "~/Developer/earth/ocean/caterpillar/9-螭吻/99-待整理/临时记录/"
+        org-journal-dir "~/Developer/earth/ocean/caterpillar/9-螭吻/88-org/journal/raw/"
         org-journal-file-format "%Y-%m-%d.raw.org"
         org-journal-date-prefix "#+TITLE: "
         org-journal-date-format "%a, %d %b %Y, %j"
